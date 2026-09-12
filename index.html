@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentFlow - نظام إدارة العقارات والإيجارات</title>
+    <!-- استدعاء خط Cairo و مكتبة الأيقونات FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --whatsapp-color: #25d366;
+            --whatsapp-hover: #16a34a;
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* شاشة البداية (Splash Screen) */
+        #splashScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .splash-content {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .splash-logo {
+            font-size: 3rem;
+            color: #60a5fa;
+            margin-bottom: 10px;
+        }
+
+        .splash-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            background: linear-gradient(to right, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .splash-developer {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #cbd5e1;
+            display: inline-block;
+        }
+
+        .loader {
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-top: 3px solid #60a5fa;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* المحتوى الرئيسي */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        header h1 {
+            margin: 0 0 6px 0;
+            font-size: 1.4rem;
+            color: #60a5fa;
+        }
+
+        .developer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #cbd5e1;
+        }
+
+        /* قسم التنبيهات */
+        .alerts-section {
+            margin-bottom: 15px;
+        }
+
+        .alert-card {
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .alert-danger { background-color: #fef2f2; color: var(--danger-color); border-right: 4px solid var(--danger-color); }
+        .alert-warning { background-color: #fffbeb; color: var(--warning-color); border-right: 4px solid var(--warning-color); }
+
+        /* استمارة الإدخال */
+        .form-card {
+            background: var(--card-bg);
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-card h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: var(--primary-dark);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #475569;
+        }
+
+        .form-group input {
+            padding: 9px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            outline: none;
+            transition: all 0.2s;
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-submit {
+            grid-column: 1 / -1;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Cairo', sans-serif;
+            margin-top: 5px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* الجدول */
+        .table-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+            white-space: nowrap;
+            font-size: 0.85rem;
+        }
+
+        th, td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f8fafc;
+            font-weight: 700;
+            color: #475569;
+        }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .badge-due-soon { background-color: #fffbeb; color: var(--warning-color); border: 1px solid #fef3c7; }
+        .badge-overdue { background-color: #fef2f2; color: var(--danger-color); border: 1px solid #fee2e2; }
+        .badge-safe { background-color: #ecfdf5; color: var(--success-color); border: 1px solid #d1fae5; }
+
+        .actions-cell {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .btn-delete {
+            background-color: #fef2f2;
+            color: var(--danger-color);
+            border: 1px solid #fee2e2;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-delete:hover {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .btn-wa {
+            background-color: var(--whatsapp-color);
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+        }
+
+        .btn-wa:hover {
+            background-color: var(--whatsapp-hover);
+        }
+
+        footer {
+            text-align: center;
+            padding: 12px;
+            color: #64748b;
+            font-size: 0.75rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شاشة البداية (Splash Screen) -->
+    <div id="splashScreen">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <i class="fa-solid fa-building-shield"></i>
+            </div>
+            <h1 class="splash-title">RentFlow</h1>
+            <div class="splash-developer">
+                <i class="fa-solid fa-code"></i> By: Komail Nabeel / B.M.T Of Anesthesia & ICU
+            </div>
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1><i class="fa-solid fa-building-shield"></i> نظام إدارة إيجارات العقارات</h1>
+            <div class="developer-badge">
+                <i class="fa-solid fa-code"></i> By: Komail Nabeel / B.M.T Of Anesthesia & ICU
+            </div>
+        </header>
+
+        <!-- التنبيهات -->
+        <div id="alertsSection" class="alerts-section"></div>
+
+        <!-- استمارة الإدخال -->
+        <div class="form-card">
+            <h2><i class="fa-solid fa-file-circle-plus"></i> تسجيل عقار جديد</h2>
+            <form id="propertyForm" class="form-grid">
+                <div class="form-group">
+                    <label for="propName"><i class="fa-solid fa-signature"></i> اسم العقار / المستأجر</label>
+                    <input type="text" id="propName" required placeholder="مثال: شقة 4 - أحمد">
+                </div>
+                <div class="form-group">
+                    <label for="propLocation"><i class="fa-solid fa-location-dot"></i> الموقع</label>
+                    <input type="text" id="propLocation" required placeholder="مثال: حي الجامعة">
+                </div>
+                <div class="form-group">
+                    <label for="propPhone"><i class="fa-brands fa-whatsapp"></i> رقم الواتساب (عراقي)</label>
+                    <input type="tel" id="propPhone" required placeholder="07701234567">
+                </div>
+                <div class="form-group">
+                    <label for="dueDate"><i class="fa-solid fa-calendar-days"></i> تاريخ الاستحقاق</label>
+                    <input type="date" id="dueDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="propAmount"><i class="fa-solid fa-money-bill-wave"></i> المبلغ (د.ع)</label>
+                    <input type="number" id="propAmount" required placeholder="400000">
+                </div>
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-floppy-disk"></i> حفظ العقار
+                </button>
+            </form>
+        </div>
+
+        <!-- جدول العقارات -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>اسم العقار</th>
+                        <th>الموقع</th>
+                        <th>الهاتف</th>
+                        <th>الاستحقاق</th>
+                        <th>المبلغ</th>
+                        <th>الحالة</th>
+                        <th>الإجراء</th>
+                    </tr>
+                </thead>
+                <tbody id="propertyTableBody">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            By: Komail Nabeel / B.M.T Of Anesthesia & ICU &copy; 2026
+        </footer>
+    </div>
+
+    <script>
+        // إخفاء شاشة البداية بعد 5 ثوانٍ
+        setTimeout(() => {
+            const splash = document.getElementById('splashScreen');
+            if (splash) {
+                splash.style.opacity = '0';
+                splash.style.visibility = 'hidden';
+            }
+        }, 5000);
+
+        let properties = JSON.parse(localStorage.getItem('properties')) || [];
+
+        const form = document.getElementById('propertyForm');
+        const tableBody = document.getElementById('propertyTableBody');
+        const alertsSection = document.getElementById('alertsSection');
+
+        function saveToLocalStorage() {
+            localStorage.setItem('properties', JSON.stringify(properties));
+        }
+
+        function formatIraqiPhone(phone) {
+            let cleaned = phone.replace(/\D/g, '');
+            if (cleaned.startsWith('0')) {
+                cleaned = cleaned.substring(1);
+            }
+            if (!cleaned.startsWith('964')) {
+                cleaned = '964' + cleaned;
+            }
+            return cleaned;
+        }
+
+        function checkDueDateStatus(dueDateStr) {
+            const today = new Date();
+            const dueDate = new Date(dueDateStr);
+            const diffTime = dueDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays < 0) {
+                return { status: `متأخر (${Math.abs(diffDays)} يوم)`, class: 'badge-overdue', alertType: 'danger', icon: 'fa-triangle-exclamation' };
+            } else if (diffDays <= 5) {
+                ({ status: `قريب (${diffDays} يوم)`, class: 'badge-due-soon', alertType: 'warning', icon: 'fa-clock' });
+                return { status: `قريب (${diffDays} يوم)`, class: 'badge-due-soon', alertType: 'warning', icon: 'fa-clock' };
+            } else {
+                return { status: 'سليم', class: 'badge-safe', alertType: null, icon: 'fa-circle-check' };
+            }
+        }
+
+        function renderProperties() {
+            tableBody.innerHTML = '';
+            alertsSection.innerHTML = '';
+
+            if (properties.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: #64748b; padding: 20px;"><i class="fa-solid fa-box-open fa-lg" style="margin-bottom: 5px; display: block;"></i>لا توجد عقارات مسجلة.</td></tr>`;
+                return;
+            }
+
+            properties.forEach((prop, index) => {
+                const check = checkDueDateStatus(prop.dueDate);
+                const serialNumber = index + 1;
+                const formattedPhone = formatIraqiPhone(prop.phone);
+
+                if (check.alertType) {
+                    const alertDiv = document.createElement('div');
+                    alertDiv.className = `alert-card alert-${check.alertType}`;
+                    
+                    const waText = encodeURIComponent(`مرحباً أخي العزيز (${prop.propName})\nنود تذكيرك بأن موعد سداد إيجار العقار (${prop.location}) قد اقترب أو انتهى.\n- المبلغ المطلوب: ${Number(prop.amount).toLocaleString()} د.ع\n- موعد الاستحقاق: ${prop.dueDate}`);
+                    
+                    alertDiv.innerHTML = `
+                        <span><i class="fa-solid fa-circle-exclamation"></i> عقار (${serialNumber}) - (${prop.propName}) موعد سداده اقترب/انتهى!</span>
+                        <a href="https://api.whatsapp.com/send?phone=${formattedPhone}&text=${waText}" target="_blank" class="btn-wa">
+                            <i class="fa-brands fa-whatsapp"></i> مراسلة
+                        </a>
+                    `;
+                    alertsSection.appendChild(alertDiv);
+                }
+
+                const tableWaText = encodeURIComponent(`مرحباً أخي العزيز (${prop.propName})\nتذكير بموعد سداد إيجار العقار الواقع في (${prop.location}).\n- المبلغ المطلوب: ${Number(prop.amount).toLocaleString()} د.ع\n- موعد الاستحقاق: ${prop.dueDate}`);
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>#${serialNumber}</strong></td>
+                    <td>${prop.propName}</td>
+                    <td>${prop.location}</td>
+                    <td><bdi dir="ltr">${prop.phone}</bdi></td>
+                    <td>${prop.dueDate}</td>
+                    <td>${Number(prop.amount).toLocaleString()} د.ع</td>
+                    <td><span class="badge ${check.class}"><i class="fa-solid ${check.icon}"></i> ${check.status}</span></td>
+                    <td>
+                        <div class="actions-cell">
+                            <a href="https://api.whatsapp.com/send?phone=${formattedPhone}&text=${tableWaText}" target="_blank" class="btn-wa" title="واتساب">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </a>
+                            <button class="btn-delete" onclick="deleteProperty(${index})" title="حذف">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const newProperty = {
+                propName: document.getElementById('propName').value,
+                location: document.getElementById('propLocation').value,
+                phone: document.getElementById('propPhone').value,
+                dueDate: document.getElementById('dueDate').value,
+                amount: document.getElementById('propAmount').value
+            };
+
+            properties.push(newProperty);
+            saveToLocalStorage();
+            renderProperties();
+            form.reset();
+        });
+
+        window.deleteProperty = function(index) {
+            if (confirm('هل أنت متأكد من حذف هذا العقار؟')) {
+                properties.splice(index, 1);
+                saveToLocalStorage();
+                renderProperties();
+            }
+        };
+
+        renderProperties();
+    </script>
+</body>
+</html>

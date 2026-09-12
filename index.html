@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RentFlow - نظام إدارة الإيجارات الشامل</title>
+    <title>RentFlow - نظام إدارة الإيجارات السحابي</title>
     <!-- استدعاء خط Cairo و الأيقونات -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- استدعاء مكتبات Firebase السحابية -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+
     <style>
         :root {
             --primary-color: #3b82f6;
@@ -46,7 +50,7 @@
 
         .container { max-width: 900px; margin: 0 auto; }
 
-        /* شاشة تسجيل الدخول / اختيار الحساب */
+        /* نافذة تسجيل الدخول */
         #authSection {
             background: var(--card-bg);
             padding: 25px;
@@ -76,7 +80,6 @@
         .developer-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.2); color: #cbd5e1; }
         .logout-btn { position: absolute; top: 15px; left: 15px; background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 5px; font-size: 0.75rem; cursor: pointer; }
 
-        /* التنبيهات والاستمارة والجداول */
         .alerts-section { margin-bottom: 15px; }
         .alert-card { padding: 10px 14px; border-radius: 8px; margin-bottom: 8px; font-weight: 600; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
         .alert-danger { background-color: #fef2f2; color: var(--danger-color); border-right: 4px solid var(--danger-color); }
@@ -114,13 +117,13 @@
         <div class="splash-content" style="text-align: center;">
             <div class="splash-logo"><i class="fa-solid fa-building-shield"></i></div>
             <h1 class="splash-title">RentFlow</h1>
-            <div class="splash-developer"><i class="fa-solid fa-code"></i> By: Komail Nabeel</div>
+            <div class="splash-developer"><i class="fa-solid fa-code"></i> By: Komail Nabeel / B.M.T Of Anesthesia & ICU</div>
         </div>
     </div>
 
-    <!-- نافذة تسجيل الدخول للمستخدم أو المدير -->
+    <!-- نافذة تسجيل الدخول -->
     <div id="authSection">
-        <h2><i class="fa-solid fa-lock"></i> تسجيل الدخول للنظام</h2>
+        <h2><i class="fa-solid fa-lock"></i> تسجيل الدخول السحابي</h2>
         <form id="loginForm">
             <input type="text" id="loginUser" class="auth-input" placeholder="اسم المستخدم (Username)" required>
             <input type="password" id="loginPass" class="auth-input" placeholder="كلمة المرور (Password)" required>
@@ -129,7 +132,7 @@
         <div class="toggle-auth" onclick="toggleAuthMode()">ليس لديك حساب؟ اضغط هنا للتسجيل</div>
     </div>
 
-    <!-- المحتوى الأساسي بعد تسجيل الدخول -->
+    <!-- المحتوى الأساسي -->
     <div id="appContent" class="container">
         <header>
             <button class="logout-btn" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> خروج</button>
@@ -140,7 +143,7 @@
         <div id="adminBanner"></div>
         <div id="alertsSection" class="alerts-section"></div>
 
-        <!-- استمارة الإضافة (تظهر للمستخدم العادي فقط أو المدير) -->
+        <!-- استمارة الإضافة -->
         <div class="form-card" id="formCardContainer">
             <h2><i class="fa-solid fa-file-circle-plus"></i> تسجيل عقار جديد لحسابك</h2>
             <form id="propertyForm" class="form-grid">
@@ -164,7 +167,7 @@
                     <label>المبلغ (د.ع)</label>
                     <input type="number" id="propAmount" required placeholder="400000">
                 </div>
-                <button type="submit" class="btn-submit">حفظ العقار</button>
+                <button type="submit" class="btn-submit">حفظ العقار سحابياً</button>
             </form>
         </div>
 
@@ -192,18 +195,29 @@
     </div>
 
     <script>
-        // إخفاء شاشة البداية
+        // معلومات الـ Firebase المأخوذة من مشروعك
+        const firebaseConfig = {
+            apiKey: "AIzaSyB-Gjt2VYOu1VPyZ04ZqH-VX8djIj8cki0Q",
+            authDomain: "rentflow-eee08.firebaseapp.com",
+            projectId: "rentflow-eee08",
+            storageBucket: "rentflow-eee08.firebasestorage.app",
+            messagingSenderId: "652314883968",
+            appId: "1:652314883968:web:4ddb00185a7e5e5842b365",
+            measurementId: "G-2GPWX6GYBN"
+        };
+
+        // تهيئة فايربيس
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
         setTimeout(() => {
             const splash = document.getElementById('splashScreen');
             if (splash) { splash.style.opacity = '0'; splash.style.visibility = 'hidden'; }
-        }, 3000);
+        }, 2500);
 
-        // بيانات المدير الرئيسي (صلاحيات مطلقة لرؤية الكل)
         const ADMIN_USER = "komail";
         const ADMIN_PASS = "2026";
 
-        let users = JSON.parse(localStorage.getItem('rent_users')) || [];
-        let properties = JSON.parse(localStorage.getItem('rent_properties')) || [];
         let currentUser = JSON.parse(localStorage.getItem('rent_current_user')) || null;
 
         const authSection = document.getElementById('authSection');
@@ -225,22 +239,21 @@
             const btn = authSection.querySelector('.auth-btn');
             const toggle = authSection.querySelector('.toggle-auth');
             if (isRegistering) {
-                h2.innerHTML = `<i class="fa-solid fa-user-plus"></i> إنشاء حساب جديد`;
-                btn.innerText = `تسجيل حساب`;
+                h2.innerHTML = `<i class="fa-solid fa-user-plus"></i> إنشاء حساب سحابي جديد`;
+                btn.innerText = `تسجيل الحساب`;
                 toggle.innerText = `لديك حساب بالفعل؟ اضغط هنا لدخول`;
             } else {
-                h2.innerHTML = `<i class="fa-solid fa-lock"></i> تسجيل الدخول للنظام`;
+                h2.innerHTML = `<i class="fa-solid fa-lock"></i> تسجيل الدخول السحابي`;
                 btn.innerText = `دخول`;
                 toggle.innerText = `ليس لديك حساب؟ اضغط هنا للتسجيل`;
             }
         }
 
-        loginForm.addEventListener('submit', (e) => {
+        loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const u = document.getElementById('loginUser').value.trim();
             const p = document.getElementById('loginPass').value.trim();
 
-            // فحص إذا كان المدير
             if (u === ADMIN_USER && p === ADMIN_PASS) {
                 currentUser = { username: "Admin (Komail)", isAdmin: true };
                 localStorage.setItem('rent_current_user', JSON.stringify(currentUser));
@@ -248,25 +261,29 @@
                 return;
             }
 
-            if (isRegistering) {
-                let exists = users.find(x => x.username === u);
-                if (exists) {
-                    alert('اسم المستخدم مستخدم مسبقاً، اختر غيره.');
-                    return;
-                }
-                users.push({ username: u, password: p });
-                localStorage.setItem('rent_users', JSON.stringify(users));
-                alert('تم إنشاء الحساب بنجاح، يمكنك تسجيل الدخول الآن.');
-                toggleAuthMode();
-            } else {
-                let found = users.find(x => x.username === u && x.password === p);
-                if (found) {
-                    currentUser = { username: u, isAdmin: false };
-                    localStorage.setItem('rent_current_user', JSON.stringify(currentUser));
-                    checkAuth();
+            try {
+                const usersRef = db.collection('users');
+                if (isRegistering) {
+                    const checkUser = await usersRef.where('username', '==', u).get();
+                    if (!checkUser.empty) {
+                        alert('اسم المستخدم موجود مسبقاً، اختر غيره.');
+                        return;
+                    }
+                    await usersRef.add({ username: u, password: p });
+                    alert('تم إنشاء الحساب السحابي بنجاح!');
+                    toggleAuthMode();
                 } else {
-                    alert('خطأ في اسم المستخدم أو كلمة المرور!');
+                    const query = await usersRef.where('username', '==', u).where('password', '==', p).get();
+                    if (!query.empty) {
+                        currentUser = { username: u, isAdmin: false };
+                        localStorage.setItem('rent_current_user', JSON.stringify(currentUser));
+                        checkAuth();
+                    } else {
+                        alert('خطأ في اسم المستخدم أو كلمة المرور!');
+                    }
                 }
+            } catch (error) {
+                alert('حدث خطأ في الاتصال بالإنترنت: ' + error.message);
             }
         });
 
@@ -285,15 +302,15 @@
                 userInfoDisplay.innerHTML = `<i class="fa-solid fa-user-shield"></i> مرحباً: ${currentUser.username}`;
                 
                 if (currentUser.isAdmin) {
-                    adminBanner.innerHTML = `<div class="admin-notice"><i class="fa-solid fa-eye"></i> أنت تملك صلاحية المدير (Admin): تشاهد كافة العقارات والبيانات الخاصة بجميع المستخدمين.</div>`;
-                    formCardContainer.style.display = 'none'; // المدير فقط يراقب ويحذف
+                    adminBanner.innerHTML = `<div class="admin-notice"><i class="fa-solid fa-eye"></i> لوحة المدير العامة (Admin): تشاهد عقارات جميع المستخدمين لحظياً من السحابة.</div>`;
+                    formCardContainer.style.display = 'none';
                     thOwner.style.display = 'table-cell';
                 } else {
                     adminBanner.innerHTML = '';
                     formCardContainer.style.display = 'block';
                     thOwner.style.display = 'none';
                 }
-                renderProperties();
+                loadPropertiesFromCloud();
             }
         }
 
@@ -314,7 +331,7 @@
             return { status: 'سليم', class: 'badge-safe', alertType: null, icon: 'fa-circle-check' };
         }
 
-        propertyForm.addEventListener('submit', function(e) {
+        propertyForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const newProperty = {
                 owner: currentUser.username,
@@ -322,76 +339,87 @@
                 location: document.getElementById('propLocation').value,
                 phone: document.getElementById('propPhone').value,
                 dueDate: document.getElementById('dueDate').value,
-                amount: document.getElementById('propAmount').value
+                amount: document.getElementById('propAmount').value,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
             };
-            properties.push(newProperty);
-            localStorage.setItem('rent_properties', JSON.stringify(properties));
-            renderProperties();
-            propertyForm.reset();
+
+            try {
+                await db.collection('properties').add(newProperty);
+                alert('تم حفظ العقار في السحابة بنجاح!');
+                propertyForm.reset();
+                loadPropertiesFromCloud();
+            } catch (error) {
+                alert('فشل حفظ العقار: ' + error.message);
+            }
         });
 
-        window.deleteProperty = function(index) {
+        window.deleteProperty = async function(docId) {
             if (confirm('هل أنت متأكد من الحذف؟')) {
-                properties.splice(index, 1);
-                localStorage.setItem('rent_properties', JSON.stringify(properties));
-                renderProperties();
+                try {
+                    await db.collection('properties').doc(docId).delete();
+                    loadPropertiesFromCloud();
+                } catch (error) {
+                    alert('فشل الحذف: ' + error.message);
+                }
             }
         };
 
-        function renderProperties() {
-            tableBody.innerHTML = '';
+        function loadPropertiesFromCloud() {
+            tableBody.innerHTML = `<tr><td colspan="9" style="text-align: center; padding: 20px;">جاري جلب البيانات من السحابة...</td></tr>`;
             alertsSection.innerHTML = '';
 
-            // إذا كان مدير يشاهد الكل، وإذا مستخدم عادي يشاهد عقاراته فقط
-            let displayedList = currentUser.isAdmin ? properties : properties.filter(p => p.owner === currentUser.username);
+            db.collection('properties').orderBy('createdAt', 'desc').onSnapshot((snapshot) => {
+                tableBody.innerHTML = '';
+                alertsSection.innerHTML = '';
+                
+                let allProps = [];
+                snapshot.forEach((doc) => {
+                    allProps.push({ id: doc.id, ...doc.data() });
+                });
 
-            if (displayedList.length === 0) {
-                tableBody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: #64748b; padding: 20px;">لا توجد عقارات مسجلة.</td></tr>`;
-                return;
-            }
+                let displayedList = currentUser.isAdmin ? allProps : allProps.filter(p => p.owner === currentUser.username);
 
-            displayedList.forEach((prop, realIndex) => {
-                // البحث عن الindex الحقيقي في المصفوفة الأساسية
-                let actualIndex = properties.indexOf(prop);
-                const check = checkDueDateStatus(prop.dueDate);
-                const serialNumber = realIndex + 1;
-                const formattedPhone = formatIraqiPhone(prop.phone);
-
-                if (currentUser.isAdmin && check.alertType) {
-                    const alertDiv = document.createElement('div');
-                    alertDiv.className = `alert-card alert-${check.alertType}`;
-                    alertDiv.innerHTML = `<span>تنبيه عقار (${prop.propName}) للمستخدم [${prop.owner}] موعده قرب!</span>`;
-                    alertsSection.appendChild(alertDiv);
+                if (displayedList.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: #64748b; padding: 20px;">لا توجد عقارات مسجلة.</td></tr>`;
+                    return;
                 }
 
-                const tableWaText = encodeURIComponent(`مرحباً (${prop.propName})\nتذكير بسداد إيجار العقار في (${prop.location}). المبلغ: ${prop.amount} د.ع، الاستحقاق: ${prop.dueDate}.`);
+                displayedList.forEach((prop, realIndex) => {
+                    const check = checkDueDateStatus(prop.dueDate);
+                    const serialNumber = realIndex + 1;
+                    const formattedPhone = formatIraqiPhone(prop.phone);
 
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td><strong>#${serialNumber}</strong></td>
-                    ${currentUser.isAdmin ? `<td><span style="color:var(--primary-color); font-weight:bold;">${prop.owner}</span></td>` : ''}
-                    <td>${prop.propName}</td>
-                    <td>${prop.location}</td>
-                    <td><bdi dir="ltr">${prop.phone}</bdi></td>
-                    <td>${prop.dueDate}</td>
-                    <td>${Number(prop.amount).toLocaleString()} د.ع</td>
-                    <td><span class="badge ${check.class}"><i class="fa-solid ${check.icon}"></i> ${check.status}</span></td>
-                    <td>
-                        <div style="display:flex; gap:5px;">
-                            <a href="https://api.whatsapp.com/send?phone=${formattedPhone}&text=${tableWaText}" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i></a>
-                            <button class="btn-delete" onclick="deleteProperty(${actualIndex})"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                    </td>
-                `;
-                tableTableBodyAppend(row);
+                    if (currentUser.isAdmin && check.alertType) {
+                        const alertDiv = document.createElement('div');
+                        alertDiv.className = `alert-card alert-${check.alertType}`;
+                        alertDiv.innerHTML = `<span>تنبيه عقار (${prop.propName}) للمستخدم [${prop.owner}] موعده قرب!</span>`;
+                        alertsSection.appendChild(alertDiv);
+                    }
+
+                    const tableWaText = encodeURIComponent(`مرحباً (${prop.propName})\nتذكير بسداد إيجار العقار في (${prop.location}). المبلغ: ${prop.amount} د.ع، الاستحقاق: ${prop.dueDate}.`);
+
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><strong>#${serialNumber}</strong></td>
+                        ${currentUser.isAdmin ? `<td><span style="color:var(--primary-color); font-weight:bold;">${prop.owner}</span></td>` : ''}
+                        <td>${prop.propName}</td>
+                        <td>${prop.location}</td>
+                        <td><bdi dir="ltr">${prop.phone}</bdi></td>
+                        <td>${prop.dueDate}</td>
+                        <td>${Number(prop.amount).toLocaleString()} د.ع</td>
+                        <td><span class="badge ${check.class}"><i class="fa-solid ${check.icon}"></i> ${check.status}</span></td>
+                        <td>
+                            <div style="display:flex; gap:5px;">
+                                <a href="https://api.whatsapp.com/send?phone=${formattedPhone}&text=${tableWaText}" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i></a>
+                                <button class="btn-delete" onclick="deleteProperty('${prop.id}')"><i class="fa-solid fa-trash-can"></i></button>
+                            </div>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
             });
         }
 
-        function tableTableBodyAppend(row) {
-            tableBody.appendChild(row);
-        }
-
-        // تشغيل التحقق عند فتح الصفحة
         if (currentUser) {
             checkAuth();
         }

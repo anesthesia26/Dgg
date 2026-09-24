@@ -1,0 +1,2311 @@
+﻿
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="theme-color" content="#F8FAFC">
+  <title>الموسوعة التخديرية السريرية الشاملة | Anesthesia & ICU Master Workstation</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-system.css">
+
+  <style>
+    /* Strict Body Layout Fix (Single Column Architecture) */
+    html {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      justify-content: flex-start !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+      min-height: 100vh;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow-x: hidden !important;
+    }
+    /* TOP NAVIGATION HEADER STYLING (Modern Glassmorphic Neumorphic) */
+    .top-nav {
+      width: 100% !important;
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: var(--glass-blur) !important;
+      -webkit-backdrop-filter: var(--glass-blur) !important;
+      border-bottom: 1px solid var(--glass-border) !important;
+      padding: 12px 24px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 16px !important;
+      box-shadow: var(--shadow-sm) !important;
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 100 !important;
+      box-sizing: border-box !important;
+    }
+    .top-nav-brand {
+      display: flex !important;
+      align-items: center !important;
+      gap: 14px !important;
+      flex-wrap: nowrap !important;
+    }
+    .top-nav-brand .menu-toggle-btn {
+      position: static !important;
+      width: 42px !important;
+      height: 42px !important;
+      border-radius: var(--radius-sm) !important;
+      border: 1px solid var(--glass-border) !important;
+      background: #FFFFFF !important;
+      box-shadow: var(--neu-button) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 4px !important;
+      cursor: pointer !important;
+      flex-shrink: 0 !important;
+      transition: all var(--transition-fast) !important;
+    }
+    .top-nav-brand .menu-toggle-btn:hover {
+      box-shadow: var(--neu-extrude) !important;
+      transform: translateY(-1px) !important;
+      background: #F8FAFC !important;
+    }
+    .top-nav-brand .menu-toggle-btn span {
+      display: block !important;
+      width: 20px !important;
+      height: 2.5px !important;
+      border-radius: 2px !important;
+      background: var(--primary) !important;
+    }
+    .logo-circle {
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: var(--radius-md) !important;
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.12), rgba(16, 185, 129, 0.12)) !important;
+      border: 1px solid rgba(15, 118, 110, 0.22) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 24px !important;
+      flex-shrink: 0 !important;
+      box-shadow: var(--neu-inset) !important;
+    }
+    .title-group {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 3px !important;
+    }
+    .title-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      flex-wrap: wrap !important;
+    }
+    .title-row h1 {
+      font-size: 19px !important;
+      font-weight: 900 !important;
+      color: var(--text-primary) !important;
+      margin: 0 !important;
+      line-height: 1.2 !important;
+      letter-spacing: -0.2px !important;
+    }
+    .workstation-version-tag {
+      font-size: 11px !important;
+      font-weight: 800 !important;
+      color: var(--primary) !important;
+      background: rgba(15, 118, 110, 0.1) !important;
+      border: 1px solid rgba(15, 118, 110, 0.25) !important;
+      border-radius: var(--radius-full) !important;
+      padding: 2px 8px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+    }
+    .sub-title {
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      color: var(--text-muted) !important;
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      margin: 0 !important;
+    }
+    .author-credit-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 3px 12px !important;
+      background: rgba(15, 118, 110, 0.08) !important;
+      border: 1px solid rgba(15, 118, 110, 0.22) !important;
+      border-radius: var(--radius-full) !important;
+      font-size: 12px !important;
+      font-weight: 800 !important;
+      color: var(--primary) !important;
+      margin-top: 2px !important;
+      width: fit-content !important;
+      box-shadow: inset 0 1px 2px rgba(15, 118, 110, 0.05) !important;
+      font-family: 'JetBrains Mono', 'Tajawal', sans-serif !important;
+    }
+    .top-nav-actions {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      flex-shrink: 0 !important;
+    }
+    .user-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 7px !important;
+      padding: 7px 16px !important;
+      background: #FFFFFF !important;
+      border: 1px solid var(--glass-border) !important;
+      border-radius: var(--radius-full) !important;
+      font-size: 12.5px !important;
+      font-weight: 800 !important;
+      color: var(--text-primary) !important;
+      box-shadow: var(--neu-inset) !important;
+      white-space: nowrap !important;
+    }
+    .user-badge::before {
+      content: '' !important;
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      background: var(--secondary) !important;
+      box-shadow: 0 0 6px rgba(16, 185, 129, 0.7) !important;
+    }
+    .logout-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 7px 16px !important;
+      background: #FFFFFF !important;
+      border: 1px solid rgba(220, 38, 38, 0.25) !important;
+      border-radius: var(--radius-full) !important;
+      font-size: 12px !important;
+      font-weight: 800 !important;
+      color: var(--emergency) !important;
+      cursor: pointer !important;
+      box-shadow: var(--neu-button) !important;
+      transition: all var(--transition-fast) !important;
+      white-space: nowrap !important;
+    }
+    .logout-btn:hover {
+      background: rgba(220, 38, 38, 0.08) !important;
+      transform: translateY(-1px) !important;
+    }
+    @media (max-width: 900px) {
+      .top-nav {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+        padding: 12px 16px !important;
+      }
+      .top-nav-actions {
+        width: 100% !important;
+        justify-content: space-between !important;
+      }
+      .title-row h1 {
+        font-size: 16px !important;
+      }
+    }
+    .patient-master-bar {
+      width: calc(100% - 24px) !important;
+      max-width: 1360px !important;
+      margin: 12px auto 6px !important;
+      box-sizing: border-box !important;
+    }
+    .horizontal-nav-bar {
+      width: 100% !important;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      box-sizing: border-box;
+    }
+    .main-content {
+      width: 100% !important;
+      max-width: 1360px !important;
+      margin: 0 auto !important;
+      padding: 12px 14px 60px !important;
+      box-sizing: border-box !important;
+      flex: 1;
+    }
+    .tab-content {
+      display: none !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .tab-content.active {
+      display: block !important;
+    }
+    /* STRICT ADMIN DASHBOARD VISIBILITY (KOMO4 ADMIN ONLY) */
+    .admin-only-feature,
+    #tab-admin {
+      display: none !important;
+    }
+    body.is-admin-verified .admin-only-feature {
+      display: inline-flex !important;
+    }
+    body.is-admin-verified #tab-admin.active {
+      display: block !important;
+    }
+    .subtab-content {
+      display: none !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .subtab-content.active {
+      display: block !important;
+    }
+    
+    /* Global Patient Master Bar (Neumorphic Glass Header) */
+    .patient-master-bar {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      margin: 14px 16px 10px;
+      box-shadow: var(--shadow-sm), var(--glass-sheen);
+    }
+    .pmb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      align-items: end;
+    }
+    .pmb-readouts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--glass-border-subtle);
+      align-items: center;
+    }
+    .pmb-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: #F8FAFC;
+      border: 1px solid var(--glass-border-subtle);
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      box-shadow: var(--neu-inset);
+    }
+    .pmb-pill strong {
+      color: var(--primary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+    }
+    .pmb-pill.status-normal strong { color: var(--secondary); }
+    .pmb-pill.status-warn strong { color: var(--warning); }
+    .pmb-pill.status-danger strong { color: var(--emergency); }
+
+    /* Horizontal Quick-Nav Bar */
+    .horizontal-nav-bar {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: var(--glass-blur-sm);
+      border-bottom: 1px solid var(--glass-border-subtle);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .horizontal-nav-bar::-webkit-scrollbar { display: none; }
+    .h-nav-btn {
+      white-space: nowrap;
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid var(--glass-border-subtle);
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--neu-button);
+      transition: all var(--transition-fast);
+    }
+    .h-nav-btn:hover {
+      color: var(--primary);
+      background: #FFFFFF;
+      transform: translateY(-1px);
+    }
+    .h-nav-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    }
+
+    /* Sub-tabs within sections */
+    .subnav-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--glass-border-subtle);
+      padding-bottom: 8px;
+    }
+    .subnav-btn {
+      padding: 6px 14px;
+      border-radius: var(--radius-md);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #F8FAFC;
+      border: 1px solid var(--glass-border-subtle);
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+    }
+    .subnav-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    /* Capnography Wave Cards */
+    .capno-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .capno-card {
+      background: var(--glass-surface);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      border-right: 4px solid var(--primary);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .capno-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .capno-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .wave-svg {
+      width: 100%;
+      height: 90px;
+      background: #090D16;
+      border-radius: var(--radius-md);
+      margin: 10px 0;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+      display: block;
+    }
+    .capno-meta {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .capno-actions-box {
+      background: #F8FAFC;
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      border-right: 3px solid var(--secondary);
+      margin-top: auto;
+    }
+    .capno-actions-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--secondary);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .capno-actions-list {
+      margin: 0;
+      padding-right: 18px;
+      font-size: 11.5px;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    /* Ventilator Modes Styles */
+    .mode-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .mode-btn {
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--glass-border);
+      background: #FFFFFF;
+      font-weight: 800;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      box-shadow: var(--neu-button);
+      transition: all var(--transition-fast);
+    }
+    .mode-btn.active {
+      background: var(--vent);
+      color: #FFFFFF;
+      border-color: var(--vent);
+      box-shadow: 0 4px 12px rgba(14, 116, 144, 0.25);
+    }
+    .mode-detail-card {
+      background: var(--glass-surface);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    /* ABG Therapy Prescription Styles */
+    .therapy-card {
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-top: 12px;
+      border-right: 4px solid var(--primary);
+      background: #FFFFFF;
+      box-shadow: var(--shadow-sm);
+    }
+    .therapy-card.danger {
+      border-right-color: var(--emergency);
+      background: rgba(220, 38, 38, 0.03);
+    }
+    .therapy-card.warning {
+      border-right-color: var(--warning);
+      background: rgba(217, 119, 6, 0.03);
+    }
+    .therapy-card.safe {
+      border-right-color: var(--secondary);
+      background: rgba(5, 150, 105, 0.03);
+    }
+    .therapy-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    /* Checklist & Risk Assessment Boxes */
+    .risk-eval-box {
+      background: #FFFFFF;
+      border: 1px solid var(--glass-border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .chk-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      margin-bottom: 4px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: background var(--transition-fast);
+    }
+    .chk-label:hover {
+      background: rgba(15, 118, 110, 0.05);
+    }
+    .chk-label input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--primary);
+    }
+  </style>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+  <!-- App Core Scripts -->
+  <script src="js/clinical-engine.js"></script>
+  <script src="js/clinical-data.js"></script>
+</head>
+<body>
+
+  <!-- Top App Navigation Bar -->
+  <header class="top-nav">
+    <div class="top-nav-brand">
+      <button id="menu-toggle-btn" class="menu-toggle-btn" onclick="toggleDrawer()" aria-label="فتح القائمة السريرية" title="فتح قائمة الأقسام">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="logo-circle">⚕️</div>
+      <div class="title-group">
+        <div class="title-row">
+          <h1>الموسوعة التخديرية السريرية الشاملة</h1>
+          <span class="workstation-version-tag">Workstation 3.0</span>
+        </div>
+        <div class="sub-title">Anesthesia &amp; ICU Clinical Master Workstation</div>
+        <div class="author-credit-badge">
+          <span>👑 By: Komail Nabeel / B.M.T Of Anesthesia &amp; ICU</span>
+        </div>
+      </div>
+    </div>
+    <div class="top-nav-actions">
+      <span class="user-badge" id="nav-user-badge">د. كميل نبيل / مسؤول</span>
+      <button class="logout-btn" onclick="handleLogout()" title="تسجيل الخروج">
+        <span>🚪</span>
+        <span>خروج</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Global Patient Master Bar -->
+  <div class="patient-master-bar">
+    <div class="pmb-grid">
+      <div>
+        <label for="pmb-weight">الوزن الفعلي (Weight kg):</label>
+        <input type="number" id="pmb-weight" value="70" step="0.5" min="1" max="250" oninput="runMasterCalculations()">
+      </div>
+      <div>
+        <label for="pmb-height">الطول (Height cm):</label>
+        <input type="number" id="pmb-height" value="170" step="1" min="30" max="230" oninput="runMasterCalculations()">
+      </div>
+      <div>
+        <label for="pmb-age">العمر (Age):</label>
+        <div style="display: flex; gap: 4px;">
+          <input type="number" id="pmb-age" value="35" step="1" min="0" max="110" style="flex: 2;" oninput="runMasterCalculations()">
+          <select id="pmb-age-unit" style="flex: 1; padding: 4px;" onchange="runMasterCalculations()">
+            <option value="years" selected>سنة</option>
+            <option value="months">شهر</option>
+            <option value="days">يوم</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label for="pmb-gender">الجنس (Gender):</label>
+        <select id="pmb-gender" onchange="runMasterCalculations()">
+          <option value="male" selected>ذكر (Male)</option>
+          <option value="female">أنثى (Female)</option>
+        </select>
+      </div>
+      <div>
+        <label for="pmb-asa">تصنيف الحالة (ASA Class):</label>
+        <select id="pmb-asa" onchange="runMasterCalculations()">
+          <option value="1" selected>ASA I (سليم طبيعياً)</option>
+          <option value="2">ASA II (مرض جهازي خفيف)</option>
+          <option value="3">ASA III (مرض جهازي شديد)</option>
+          <option value="4">ASA IV (مرض جهازي يهدد الحياة)</option>
+          <option value="5">ASA V (محتضر لا يتوقع بقاؤه)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Live Calculated Readouts -->
+    <div class="pmb-readouts">
+      <div class="pmb-pill" id="pill-bmi">BMI: <strong id="out-bmi">24.2</strong> kg/m²</div>
+      <div class="pmb-pill">الوزن المثالي (IBW): <strong id="out-ibw">66.0</strong> kg</div>
+      <div class="pmb-pill">الوزن المعدل (ABW): <strong id="out-abw">67.6</strong> kg</div>
+      <div class="pmb-pill">مساحة الجسم (BSA): <strong id="out-bsa">1.82</strong> m²</div>
+      <div class="pmb-pill">أنبوب الرغامي (ETT): <strong id="out-ett">7.5 - 8.0</strong> mm ID</div>
+      <div class="pmb-pill">عمق التنبيب: <strong id="out-ett-depth">21 - 23</strong> cm</div>
+    </div>
+  </div>
+
+  <!-- HORIZONTAL QUICK-NAV BAR (Desktop & Mobile Swiper) -->
+  <div class="horizontal-nav-bar">
+    <button class="h-nav-btn active" onclick="switchMasterTab(event, 'tab-induction')"><span>💉</span><span>1. التقييم والتحضير والتنبيب</span></button>
+    <button class="h-nav-btn" onclick="switchMasterTab(event, 'tab-maintenance')"><span>⚙️</span><span>2. إدامة التخدير</span></button>
+    <button class="h-nav-btn" onclick="switchMasterTab(event, 'tab-reversal')"><span>🔄</span><span>3. الإفاقة ومضادات التخدير</span></button>
+    <button class="h-nav-btn" onclick="switchMasterTab(event, 'tab-emergency')"><span>🚨</span><span>4. الإنعاش والطوارئ الكبرى</span></button>
+    <button class="h-nav-btn" onclick="switchMasterTab(event, 'tab-vent')"><span>🫁</span><span>5. الفنتليتر وغازات ABG الموجهة</span></button>
+    <button class="h-nav-btn" onclick="switchMasterTab(event, 'tab-capno')"><span>📈</span><span>6. موسوعة الكابنوغراف والعلاج</span></button>
+    <button class="h-nav-btn" onclick="switchMasterTab(event, 'tab-icu')"><span>🏥</span><span>7. العناية المركزة والمضخات</span></button>
+    <button class="h-nav-btn" onclick="switchMasterTab(event, 'tab-cdss')"><span>🧠</span><span>8. محرك القرارات السريرية CDSS</span></button>
+    <button class="h-nav-btn" onclick="switchMasterTab(event, 'tab-spinal')"><span>💉</span><span>9. التخدير النصفي وسوائل الجسم</span></button>
+    <button class="h-nav-btn" onclick="switchMasterTab(event, 'tab-obesity')"><span>⚖️</span><span>10. السمنة وتعديل الجرع</span></button>
+    <button class="h-nav-btn" onclick="switchMasterTab(event, 'tab-pediatric')"><span>👶</span><span>11. تخدير الأطفال</span></button>
+    <button class="h-nav-btn" onclick="switchMasterTab(event, 'tab-obstetric')"><span>🤰</span><span>12. تخدير التوليد والولادة</span></button>
+    <button class="h-nav-btn" onclick="switchMasterTab(event, 'tab-regional')"><span>🩺</span><span>13. البلوكات والأدوية والتخفيف</span></button>
+    <button class="h-nav-btn admin-only-feature" onclick="switchMasterTab(event, 'tab-admin')"><span>🛡️</span><span>14. لوحة الإدارة والمشتركين</span></button>
+  </div>
+
+  <!-- DRAWER OVERLAY -->
+  <div id="drawer-overlay" class="drawer-overlay" onclick="closeDrawer()"></div>
+
+  <div class="tabs-wrapper" id="nav-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">🧭 أقسام محطة العمل السريرية</span>
+      <button class="drawer-close-btn" onclick="closeDrawer()" aria-label="إغلاق">✖</button>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchMasterTab(event, 'tab-induction')"><span class="tab-num">1</span><span class="tab-label">التقييم والتحضير والتحريض والتنبيب<em>Pre-op &amp; Airway</em></span></button>
+      <button class="tab-btn" onclick="switchMasterTab(event, 'tab-maintenance')"><span class="tab-num">2</span><span class="tab-label">إدامة التخدير والعمق والمضاعفات<em>Maintenance &amp; TIVA</em></span></button>
+      <button class="tab-btn" onclick="switchMasterTab(event, 'tab-reversal')"><span class="tab-num">3</span><span class="tab-label">الإفاقة ومضادات التخدير ونزع التيوب<em>Reversal &amp; Emergence</em></span></button>
+      <button class="tab-btn" onclick="switchMasterTab(event, 'tab-emergency')"><span class="tab-num">4</span><span class="tab-label">الإنعاش والطوارئ الكبرى<em>ACLS &amp; Crisis</em></span></button>
+      <button class="tab-btn" onclick="switchMasterTab(event, 'tab-vent')"><span class="tab-num">5</span><span class="tab-label">جهاز التنفس الاصطناعي وغازات ABG الموجهة<em>Ventilator &amp; ABG</em></span></button>
+      <button class="tab-btn" onclick="switchMasterTab(event, 'tab-capno')"><span class="tab-num">6</span><span class="tab-label">موسوعة الكابنوغراف والإجراءات السريرية<em>Capnography Master</em></span></button>
+      <button class="tab-btn" onclick="switchMasterTab(event, 'tab-icu')"><span class="tab-num">7</span><span class="tab-label">العناية المركزة والمضخات الذكية<em>ICU Master &amp; Pumps</em></span></button>
+      <button class="tab-btn" onclick="switchMasterTab(event, 'tab-cdss')"><span class="tab-num">8</span><span class="tab-label">محرك القرارات السريرية الذكي<em>Smart CDSS Engine</em></span></button>
+      <button class="tab-btn" onclick="switchMasterTab(event, 'tab-spinal')"><span class="tab-num">9</span><span class="tab-label">التخدير النصفي وسوائل الجسم والدم<em>Spinal &amp; Fluids</em></span></button>
+      <button class="tab-btn" onclick="switchMasterTab(event, 'tab-obesity')"><span class="tab-num">10</span><span class="tab-label">تخدير مرضى السمنة المفرطة<em>Bariatric Anesthesia</em></span></button>
+      <button class="tab-btn" onclick="switchMasterTab(event, 'tab-pediatric')"><span class="tab-num">11</span><span class="tab-label">تخدير الأطفال والتهدئة الواعية<em>Pediatric Anesthesia</em></span></button>
+      <button class="tab-btn" onclick="switchMasterTab(event, 'tab-obstetric')"><span class="tab-num">12</span><span class="tab-label">تخدير التوليد والعمليات القيصرية<em>Obstetric Anesthesia</em></span></button>
+      <button class="tab-btn" onclick="switchMasterTab(event, 'tab-regional')"><span class="tab-num">13</span><span class="tab-label">البلوكات وموسوعة الأدوية والتخفيف<em>Regional &amp; Encyclopedia</em></span></button>
+      <button class="tab-btn admin-only-feature" onclick="switchMasterTab(event, 'tab-admin')"><span class="tab-num">14</span><span class="tab-label">لوحة إدارة المشتركين والمدير<em>Admin Management</em></span></button>
+    </div>
+  </div>
+
+
+  <main class="main-content">
+
+  <!-- TAB 1: التقييم قبل العمليات والتحريض وإدارة المجرى الهوائي -->
+  <div id="tab-induction" class="tab-content active searchable-content">
+    <div class="section-header-banner">
+      <h2><span>💉</span> التقييم الشامل قبل العمليات ومخاطر المرضى والتحريض التخديري</h2>
+      <span class="section-badge">Pre-op, Risk &amp; Airway</span>
+    </div>
+
+    <!-- Sub-navigation within Tab 1 -->
+    <div class="subnav-tabs">
+      <button class="subnav-btn active" onclick="switchSubTab(event, 'preop-sub-airway')">المجرى الهوائي (Airway)</button>
+      <button class="subnav-btn" onclick="switchSubTab(event, 'preop-sub-rcri')">مؤشر الخطورة القلبية (RCRI)</button>
+      <button class="subnav-btn" onclick="switchSubTab(event, 'preop-sub-stopbang')">انقطاع التنفس النومي (STOP-Bang)</button>
+      <button class="subnav-btn" onclick="switchSubTab(event, 'preop-sub-organs')">تقييم الأمراض المزمنة (Organ Systems)</button>
+      <button class="subnav-btn" onclick="switchSubTab(event, 'preop-sub-npo')">الصيام ومميعات الدم (NPO &amp; Bridging)</button>
+      <button class="subnav-btn" onclick="switchSubTab(event, 'preop-sub-drugs')">أدوية الحث والتنبيب (Induction Drugs)</button>
+    </div>
+
+    <!-- Sub-tab 1: Airway Assessment & Equipment -->
+    <div id="preop-sub-airway" class="subtab-content active">
+      <div class="glass-card">
+        <div class="glass-card-head">
+          <span class="dot" style="background: var(--primary);"></span>
+          <span>مواصفات وقياسات معدات المجرى الهوائي المحسوبة تلقائياً للمريض:</span>
+        </div>
+        <div class="glass-grid-2">
+          <div class="glass-val"><span>أنبوب رغامي بكف (Cuffed ETT):</span><strong class="data-val" id="ind-ett-cuffed">--</strong></div>
+          <div class="glass-val"><span>أنبوب رغامي بدون كف (Uncuffed ETT):</span><strong class="data-val" id="ind-ett-uncuffed">--</strong></div>
+          <div class="glass-val"><span>عمق التنبيب عند الأسنان/الشفاه:</span><strong class="data-val" id="ind-ett-depth">--</strong></div>
+          <div class="glass-val"><span>قناع الحنجرة الموصى به (LMA Size):</span><strong class="data-val" id="ind-lma-size">--</strong></div>
+          <div class="glass-val"><span>شفرة منظار الحنجرة (Blade):</span><strong class="data-val" id="ind-blade">--</strong></div>
+          <div class="glass-val"><span>قثطار الشفط الموصى به (Suction Fr):</span><strong class="data-val" id="ind-suction">--</strong></div>
+        </div>
+      </div>
+
+      <div class="glass-card" style="margin-top: 12px;">
+        <div class="glass-card-head">
+          <span class="dot" style="background: var(--secondary);"></span>
+          <span>فحص المجرى الهوائي السريري (Mallampati &amp; LEMON Criteria):</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+          <div class="risk-eval-box">
+            <h4 style="color: var(--primary); font-size: 13px; margin-bottom: 8px;">تصنيف مالامباتي (Mallampati Score):</h4>
+            <div style="font-size: 12px; line-height: 1.6;">
+              <p><strong>Class I:</strong> رؤية الحنك الرخو، اللهاة، والدعامات اللوزية (تنبيب سهل).</p>
+              <p><strong>Class II:</strong> رؤية الحنك الرخو واللهاة وجزء من البلعوم (سهل إلى متوسط).</p>
+              <p style="color: var(--warning);"><strong>Class III:</strong> رؤية الحنك الرخو وقاعدة اللهاة فقط (صعب متوقع — جهز بوجي وفيديو).</p>
+              <p style="color: var(--emergency);"><strong>Class IV:</strong> رؤية الحنك الصلب فقط (صعب جداً — النظر في Awake Fiberoptic).</p>
+            </div>
+          </div>
+          <div class="risk-eval-box">
+            <h4 style="color: var(--primary); font-size: 13px; margin-bottom: 8px;">تقييم LEMON للتنبيب الصعب:</h4>
+            <div style="font-size: 12px; line-height: 1.6;">
+              <p><strong>L (Look):</strong> سمنة مفرطة، صغر الفك، لحية كثيفة، إصابات وجهية.</p>
+              <p><strong>E (Evaluate 3-3-2):</strong> فتح الفم &gt;=3 أصابع، المسافة الذقنية اللامية &gt;=3، والدرقية اللامية &gt;=2.</p>
+              <p><strong>M (Mallampati):</strong> تقييم الفئات III و IV.</p>
+              <p><strong>O (Obstruction):</strong> أورام، خراج، صرير تنفسي Stridor، أو رضح حنجري.</p>
+              <p><strong>N (Neck Mobility):</strong> مدى مرونة بسط الرقبة (محدودة في داء الفقار الرثياني).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-tab 2: RCRI Cardiac Risk Calculator -->
+    <div id="preop-sub-rcri" class="subtab-content" style="display: none;">
+      <div class="glass-card">
+        <div class="glass-card-head">
+          <span class="dot" style="background: var(--emergency);"></span>
+          <span>حاسبة مؤشر لي للخطورة القلبية المنقح (Revised Cardiac Risk Index - RCRI):</span>
+        </div>
+        <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 10px;">
+          حدد العوامل المتوفرة لدى المريض لتقدير خطر المضاعفات القلبية الكبرى (MACE) خلال 30 يوماً من الجراحة:
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 8px;" id="rcri-factors-box">
+          <label class="chk-label"><input type="checkbox" value="high_risk_surg" onchange="runRCRICalculation()"> جراحة عالية الخطورة (بطنية كبرى، صدرية، أو أوعية فوق الأربيبة)</label>
+          <label class="chk-label"><input type="checkbox" value="ihd" onchange="runRCRICalculation()"> سوابق نقص تروية قلبية (ذبحة، احتشاء، شبكة، أو تخطيط غير طبيعي)</label>
+          <label class="chk-label"><input type="checkbox" value="chf" onchange="runRCRICalculation()"> سوابق قصور قلب احتقاني (CHF) أو وذمة رئوية</label>
+          <label class="chk-label"><input type="checkbox" value="cvd" onchange="runRCRICalculation()"> سوابق مرض وعائي دماغي (سكتة دماغية CVA أو نوبة نقص تروية عابرة TIA)</label>
+          <label class="chk-label"><input type="checkbox" value="dm_insulin" onchange="runRCRICalculation()"> مرض السكري المعالج بالأنسولين قبل الجراحة</label>
+          <label class="chk-label"><input type="checkbox" value="creat" onchange="runRCRICalculation()"> الكرياتينين المصلي قبل الجراحة &gt; 2.0 mg/dL (177 µmol/L)</label>
+        </div>
+
+        <div id="rcri-result-panel" class="therapy-card safe" style="margin-top: 14px;">
+          <div class="therapy-title"><span>📊</span> النتيجة: <strong id="rcri-class-badge" style="color: var(--secondary);">RCRI Class I</strong> (خطر MACE: <strong id="rcri-risk-pct">0.4%</strong>)</div>
+          <div id="rcri-recommendation" style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
+            خطر قلبي ضئيل جداً. لا توجد حاجة لفحوصات قلبية إضافية متقدمة إلا إذا كان المريض يعاني من أعراض قلبية جديدة.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-tab 3: STOP-Bang OSA Calculator -->
+    <div id="preop-sub-stopbang" class="subtab-content" style="display: none;">
+      <div class="glass-card">
+        <div class="glass-card-head">
+          <span class="dot" style="background: var(--warning);"></span>
+          <span>حاسبة استبيان STOP-Bang لخطر انقطاع التنفس أثناء النوم (OSA Risk):</span>
+        </div>
+        <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 10px;">
+          اختر الإجابات الإيجابية (نعم) لتقييم خطر انسداد المجرى التنفسي بعد التخدير وتجهيز المراقبة:
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 8px;">
+          <label class="chk-label"><input type="checkbox" value="snoring" onchange="runSTOPBangCalculation()"> <strong>S (Snoring):</strong> هل تشخر بصوت عالٍ (يسمع من خلف الأبواب المغلقة)؟</label>
+          <label class="chk-label"><input type="checkbox" value="tired" onchange="runSTOPBangCalculation()"> <strong>T (Tired):</strong> هل تشعر بالتعب الشديد أو النعاس أثناء النهار؟</label>
+          <label class="chk-label"><input type="checkbox" value="observed" onchange="runSTOPBangCalculation()"> <strong>O (Observed):</strong> هل لاحظ أحد توقف تنفسك أثناء النوم؟</label>
+          <label class="chk-label"><input type="checkbox" value="pressure" onchange="runSTOPBangCalculation()"> <strong>P (Pressure):</strong> هل تعاني من ارتفاع ضغط الدم أو تتناول أدوية له؟</label>
+          <label class="chk-label"><input type="checkbox" value="bmi" id="sb-bmi-chk" onchange="runSTOPBangCalculation()"> <strong>B (BMI):</strong> مؤشر كتلة الجسم &gt; 35 kg/m²</label>
+          <label class="chk-label"><input type="checkbox" value="age" id="sb-age-chk" onchange="runSTOPBangCalculation()"> <strong>A (Age):</strong> العمر &gt; 50 سنة</label>
+          <label class="chk-label"><input type="checkbox" value="neck" onchange="runSTOPBangCalculation()"> <strong>N (Neck):</strong> محيط الرقبة &gt; 40 سم (16 إنش)</label>
+          <label class="chk-label"><input type="checkbox" value="gender" id="sb-gender-chk" onchange="runSTOPBangCalculation()"> <strong>G (Gender):</strong> الجنس ذكر (Male)</label>
+        </div>
+
+        <div id="stopbang-result-panel" class="therapy-card safe" style="margin-top: 14px;">
+          <div class="therapy-title"><span>💤</span> النتيجة: <strong id="stopbang-score-badge" style="color: var(--secondary);">النقاط: 0/8 — خطر منخفض (Low Risk OSA)</strong></div>
+          <ul id="stopbang-recommendations-list" style="margin: 0; padding-right: 18px; font-size: 12px; line-height: 1.6; color: var(--text-secondary);">
+            <li>احتمالية انقطاع التنفس أثناء النوم ضئيلة.</li>
+            <li>تطبيق بروتوكول التخدير والمراقبة القياسي.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-tab 4: Organ Systems Assessment -->
+    <div id="preop-sub-organs" class="subtab-content" style="display: none;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px;">
+        <!-- Cardiac -->
+        <div class="glass-card">
+          <div class="glass-card-head"><span class="dot" style="background: var(--emergency);"></span><span>مريض القلب التاجي وتضيق الأبهر وأجهزة تنظيم النبض</span></div>
+          <div style="font-size: 12px; line-height: 1.6; color: var(--text-secondary);">
+            <p><strong>IHD:</strong> الحفاظ على معدل ضربات 60-80 وضغط انبساطي &gt; 50 لتروية الشرايين التاجية. تأجيل الجراحة بعد الشبكة الدوائية (DES) مدة 6 أشهر.</p>
+            <p><strong>تضيق الأبهر الشديد (AS):</strong> الحفاظ على المقاومة الوعائية SVR. التخدير النصفي الواسع ممنوع نسبيّاً. تجهيز الفينيل إفرين أو النورأدرينالين مسبقاً.</p>
+            <p><strong>أجهزة ICD / Pacemakers:</strong> إيقاف الصدمة التلقائية بمغناطيس خاص لتفادي التفريغ الخاطئ بسبب الكي الكهربائي Diathermy واستخدام الملقط الثنائي Bipolar.</p>
+          </div>
+        </div>
+
+        <!-- Pulmonary -->
+        <div class="glass-card">
+          <div class="glass-card-head"><span class="dot" style="background: var(--primary);"></span><span>الربو القصبي ومرضى الانسداد الرئوي والتدخين</span></div>
+          <div style="font-size: 12px; line-height: 1.6; color: var(--text-secondary);">
+            <p><strong>الربو وCOPD:</strong> أخذ البخاخات صباحاً كالمعتاد. أدوية الحث المفضلة: كيتامين أو بروبوفول (موسعات قصبية). تجنب الأتراكوريوم والثيوبنتال والمورفين.</p>
+            <p><strong>إيقاف التدخين:</strong> 12-24 ساعة تخفض CO والنيكوتين، بينما استعادة حركة الأهداب الرئوية وتقليل المضاعفات التنفسية تتطلب &gt;= 8 أسابيع كاملة.</p>
+            <p><strong>أطفال بنزلة برد (URI):</strong> تأجيل 2-4 أسابيع إذا وجدت حمى &gt; 38.5 أو وزيز أو خمول. تفضيل LMA على الأنبوب ETT لتقليل التشنج الحنجري القصبي.</p>
+          </div>
+        </div>
+
+        <!-- Endocrine & Diabetes -->
+        <div class="glass-card">
+          <div class="glass-card-head"><span class="dot" style="background: var(--warning);"></span><span>السكري والغدد (SGLT2i, Metformin, GLP-1 &amp; Steroids)</span></div>
+          <div style="font-size: 12px; line-height: 1.6; color: var(--text-secondary);">
+            <p><strong>مثبطات SGLT2 (Empagliflozin/Dapagliflozin):</strong> إيقاف قبل 3 إلى 4 أيام لمنع الحماض الكيتوني السكري سوي السكر (Euglycemic DKA) الفتاك.</p>
+            <p><strong>الميتفورمين:</strong> إيقاف قبل 48 ساعة لمنع الحماض اللاكتيكي. <strong>مقلدات GLP-1 (Ozempic/Wegovy):</strong> إيقاف قبل أسبوع لبطء تفريغ المعدة الشديد.</p>
+            <p><strong>جرعة إجهاد الستيرويد:</strong> لمستخدمي الكورتيزون المزمن: إعطاء هيدروكورتيزون 50 mg للجراحة المتوسطة و 100 mg للجراحة الكبرى قبل الحث.</p>
+          </div>
+        </div>
+
+        <!-- Renal & Dialysis -->
+        <div class="glass-card">
+          <div class="glass-card-head"><span class="dot" style="background: var(--spinal);"></span><span>القصور الكلوي المزمن والغسيل (ESRD &amp; Dialysis)</span></div>
+          <div style="font-size: 12px; line-height: 1.6; color: var(--text-secondary);">
+            <p><strong>جلسة الغسيل:</strong> في اليوم السابق للجراحة حصراً (قبل 12-24 ساعة). البوتاسيوم الآمن للجراحة الانتخابية &lt;= 5.5 mEq/L.</p>
+            <p><strong>ناسور الغسيل AV Fistula:</strong> حماية تامة (ممنوع قياس الضغط أو تركيب كانولا بالطرف الحاوي عليه). فحص الهرير Thrill قبل وبعد الجراحة.</p>
+            <p><strong>المرخي المفضل:</strong> سيساتراكوريوم Cisatracurium (تصفية هوفمان). السكسنيل ممنوع إذا كان K+ &gt; 5.0. تجنب المورفين والبيثيدين.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-tab 5: NPO & Anticoagulant Bridging -->
+    <div id="preop-sub-npo" class="subtab-content" style="display: none;">
+      <div class="glass-card">
+        <div class="glass-card-head"><span class="dot" style="background: var(--primary);"></span><span>إرشادات الصيام المعتمدة قبل التخدير (ASA Fasting 2-4-6-8 Rule):</span></div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin-top: 8px;">
+          <div class="proto-box"><strong>ساعتان (2h):</strong> سوائل صافية فقط (ماء، عصير مصفى، شاي/قهوة بدون حليب).</div>
+          <div class="proto-box"><strong>4 ساعات (4h):</strong> حليب الأم الطبيعي للرضع (Breast Milk).</div>
+          <div class="proto-box"><strong>6 ساعات (6h):</strong> حليب الأطفال الصناعي، حليب الأبقار، وجبة خفيفة (توست ومربى).</div>
+          <div class="proto-box"><strong>8 ساعات (8h):</strong> وجبات دسمة، لحوم مقلية، دهون وبروتينات معقدة.</div>
+        </div>
+      </div>
+
+      <div class="glass-card" style="margin-top: 12px;">
+        <div class="glass-card-head"><span class="dot" style="background: var(--emergency);"></span><span>جدول توقيت إيقاف مميعات الدم ومضادات التخثر قبل التخدير النصفي والجراحة:</span></div>
+        <div style="overflow-x: auto;">
+          <table class="clinical-table" style="font-size: 12px;">
+            <thead>
+              <tr>
+                <th>الدواء المميع</th>
+                <th>إيقافه قبل الجراحة العادية</th>
+                <th>التخدير النصفي (Neuraxial Anesthesia)</th>
+                <th>إعادة الاستئناف بعد الجراحة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Warfarin (Coumadin)</strong></td>
+                <td>5 أيام قبل الجراحة</td>
+                <td style="color: var(--emergency); font-weight: 700;">فحص INR &lt; 1.4 قبل إبرة الظهر أو نزع القسطرة</td>
+                <td>بعد 12-24 ساعة مع تأمين الإرقاء</td>
+              </tr>
+              <tr>
+                <td><strong>Eliquis / Xarelto (DOACs)</strong></td>
+                <td>48 ساعة</td>
+                <td style="color: var(--emergency); font-weight: 700;">72 ساعة على الأقل قبل التخدير النصفي</td>
+                <td>بعد 24-48 ساعة حسب خطر النزف</td>
+              </tr>
+              <tr>
+                <td><strong>Dabigatran (Pradaxa)</strong></td>
+                <td>48 - 96 ساعة (حسب ClCr)</td>
+                <td style="color: var(--emergency); font-weight: 700;">72 ساعة (أو 96 ساعة في القصور الكلوي)</td>
+                <td>بعد 24-48 ساعة</td>
+              </tr>
+              <tr>
+                <td><strong>Plavix (Clopidogrel)</strong></td>
+                <td>5 - 7 أيام</td>
+                <td style="color: var(--emergency); font-weight: 700;">7 أيام كاملة تفادياً لورم دموي فوق الجافية</td>
+                <td>بعد 24 ساعة بجرعة تحميل إذا لزم</td>
+              </tr>
+              <tr>
+                <td><strong>Aspirin (81 - 100 mg)</strong></td>
+                <td>يُستمر عليه غالباً للوقاية القلبية</td>
+                <td style="color: var(--secondary); font-weight: 700;">آمن بمفرده، لكن مع مميع ثانٍ يوقفان معاً</td>
+                <td>يستمر دون انقطاع</td>
+              </tr>
+              <tr>
+                <td><strong>LMWH الوقائي (Clexane 40mg)</strong></td>
+                <td>12 ساعة</td>
+                <td style="color: var(--warning); font-weight: 700;">12 ساعة قبل إبرة الظهر ونزع القسطرة قبل 4h من الجرعة</td>
+                <td>بعد 6-12 ساعة من نزع القسطرة</td>
+              </tr>
+              <tr>
+                <td><strong>LMWH العلاجي (1 mg/kg)</strong></td>
+                <td>24 ساعة</td>
+                <td style="color: var(--emergency); font-weight: 700;">24 ساعة كاملة من آخر جرعة علاجية</td>
+                <td>بعد 24 ساعة على الأقل من الجراحة</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-tab 6: Induction Drugs Table -->
+    <div id="preop-sub-drugs" class="subtab-content" style="display: none;">
+      <div class="glass-card">
+        <div class="glass-card-head">
+          <span class="dot" style="background: var(--induction);"></span>
+          <span>جرعات وأحجام أدوية الحث التخديري والإرخاء العضلي المحسوبة سريرياً:</span>
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="clinical-table" id="table-induction-drugs">
+            <thead>
+              <tr>
+                <th>الدواء</th>
+                <th>أساس الحساب</th>
+                <th>التركيز المعتمد</th>
+                <th>الجرعة بالملغم (mg)</th>
+                <th>الحجم بالسرنجة (cc / ml)</th>
+                <th>ملاحظات سريرية سريعة</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-induction-drugs">
+              <!-- Dynamically rendered via ClinicalEngine -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: إدامة التخدير والعمق والمضاعفات -->
+  <div id="tab-maintenance" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>⚙️</span> إدامة التخدير، عمق التخدير TIVA والمضاعفات أثناء العملية</h2>
+      <span class="section-badge">Maintenance &amp; TIVA</span>
+    </div>
+
+    <div class="glass-card">
+      <div class="glass-card-head">
+        <span class="dot" style="background: var(--maintenance);"></span>
+        <span>الغازات الاستنشاقية: حاسبة MAC المصححة لعمر المريض:</span>
+      </div>
+      <div class="glass-grid-2">
+        <div class="glass-val"><span>سيفوفلوران (Sevoflurane 1 MAC):</span><strong class="data-val" id="mac-sevo">~ 1.8 - 2.0 %</strong></div>
+        <div class="glass-val"><span>آيزوفلوران (Isoflurane 1 MAC):</span><strong class="data-val" id="mac-iso">~ 1.15 %</strong></div>
+        <div class="glass-val"><span>ديسفلوران (Desflurane 1 MAC):</span><strong class="data-val" id="mac-des">~ 6.0 %</strong></div>
+        <div class="glass-val"><span>مؤشر عمق التخدير المستهدف (BIS Index):</span><strong class="data-val" style="color: var(--secondary);">40 - 60</strong></div>
+      </div>
+    </div>
+
+    <div class="glass-card" style="margin-top: 12px;">
+      <div class="glass-card-head">
+        <span class="dot" style="background: var(--emergency);"></span>
+        <span>إسعاف اضطرابات نظم القلب وهبوط الضغط أثناء العملية:</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+        <div class="proto-box">
+          <strong style="color: var(--emergency);">هبوط الضغط المفاجئ (Hypotension):</strong>
+          <p>إيفيدرين (Ephedrine) 5-10 mg بولس إذا ترافق مع بطء نبض، أو فينيليفرين (Phenylephrine) 50-100 mcg إذا كان النبض سريعاً، وتسريب سوائل بلورية دافئة.</p>
+        </div>
+        <div class="proto-box">
+          <strong style="color: var(--warning);">بطء القلب الحاد (Bradycardia &lt; 50 bpm):</strong>
+          <p>أتروبين (Atropine) 0.5 - 1.0 mg وريدياً سريعاً. إذا لم يستجب: جليكوبيرولات 0.2 mg أو أدرينالين 10-20 mcg.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: الإفاقة ومضادات التخدير -->
+  <div id="tab-reversal" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>🔄</span> الإفاقة، مضادات الإرخاء العضلي، ونزع الأنبوب الرغامي</h2>
+      <span class="section-badge">Reversal &amp; Extubation</span>
+    </div>
+
+    <div class="glass-card">
+      <div class="glass-card-head">
+        <span class="dot" style="background: var(--reversal);"></span>
+        <span>حاسبة السوغاماديكس (Sugammadex 100 mg/ml) المباشرة لوزن المريض:</span>
+      </div>
+      <div class="glass-grid-2">
+        <div class="glass-val">
+          <span>الحصار الروتيني المعتدل (TOF &gt;= 2):<br><small style="color:var(--text-muted);">2 mg/kg</small></span>
+          <strong class="data-val mg-color" id="rev-sug-rout-mg">-- mg</strong>
+          <strong class="data-val vol-color" id="rev-sug-rout-ml">-- cc</strong>
+        </div>
+        <div class="glass-val">
+          <span>الحصار العميق (TOF = 0 مع PTC 1-2):<br><small style="color:var(--text-muted);">4 mg/kg</small></span>
+          <strong class="data-val mg-color" id="rev-sug-deep-mg">-- mg</strong>
+          <strong class="data-val vol-color" id="rev-sug-deep-ml">-- cc</strong>
+        </div>
+        <div class="glass-val">
+          <span>الإنقاذ العاجل بعد الروكورونيوم العالي (RSI Rescue):<br><small style="color:var(--text-muted);">16 mg/kg</small></span>
+          <strong class="data-val mg-color" id="rev-sug-urg-mg">-- mg</strong>
+          <strong class="data-val vol-color" id="rev-sug-urg-ml">-- cc</strong>
+        </div>
+        <div class="glass-val">
+          <span>المضاد التقليدي (Neostigmine + Atropine):<br><small style="color:var(--text-muted);">عند ظهور 4 ومضات TOF مع استدامة</small></span>
+          <strong class="data-val mg-color" id="rev-neo-mg">-- mg Neo</strong>
+          <strong class="data-val vol-color" id="rev-neo-ml">-- cc Neo + Atropine</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: الإنعاش والطوارئ الكبرى -->
+  <div id="tab-emergency" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>🚨</span> الإنعاش القلبي المتقدم وبروتوكولات كوارث التخدير</h2>
+      <span class="section-badge">ACLS &amp; Perioperative Crises</span>
+    </div>
+
+    <!-- Dynamic Crises List injected via script -->
+    <div id="crises-accordion-container">
+      <!-- Injected from ClinicalData.crises -->
+    </div>
+  </div>
+
+
+  <!-- TAB 5: جهاز التنفس الاصطناعي وغازات ABG الموجهة سريرياً -->
+  <div id="tab-vent" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>🫁</span> أنماط أجهزة التنفس الاصطناعي، ميكانيكا الرئة، ومحرك علاج غازات الدم ABG</h2>
+      <span class="section-badge">Ventilator Modes &amp; Actionable ABG</span>
+    </div>
+
+    <!-- Sub-navigation for Tab 5 -->
+    <div class="subnav-tabs">
+      <button class="subnav-btn active" onclick="switchSubTab(event, 'vent-sub-modes')">أنماط الفنتليتر (Ventilator Modes)</button>
+      <button class="subnav-btn" onclick="switchSubTab(event, 'vent-sub-mechanics')">ميكانيكا الرئة والفطام (Lung Mechanics &amp; RSBI)</button>
+      <button class="subnav-btn" onclick="switchSubTab(event, 'vent-sub-ardsnet')">بروتوكول حماية الرئة (ARDSNet)</button>
+      <button class="subnav-btn" onclick="switchSubTab(event, 'vent-sub-abg')">محرك علاج غازات الدم السريري (Actionable ABG)</button>
+    </div>
+
+    <!-- Sub-tab 1: Ventilator Modes Explorer -->
+    <div id="vent-sub-modes" class="subtab-content active">
+      <div class="glass-card">
+        <div class="glass-card-head">
+          <span class="dot" style="background: var(--vent);"></span>
+          <span>استعراض أنماط التهوية الميكانيكية الشائعة والمتقدمة (Mode Explorer):</span>
+        </div>
+        <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">
+          اختر نمط التهوية لعرض آليته، الإعدادات الموصى بها، ميزاته وعيوبه، والتوصيات السريرية للتعامل معه في غرفة العمليات والعناية المركزة:
+        </p>
+        <div class="mode-chips" id="vent-modes-chips">
+          <!-- Rendered via JS -->
+        </div>
+
+        <div id="vent-mode-detail" class="mode-detail-card">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-tab 2: Advanced Lung Mechanics & RSBI Weaning -->
+    <div id="vent-sub-mechanics" class="subtab-content" style="display: none;">
+      <div class="glass-card">
+        <div class="glass-card-head">
+          <span class="dot" style="background: var(--primary);"></span>
+          <span>حاسبة ميكانيكا الرئة المتقدمة ومعايير الفطام (Driving Pressure, Compliance &amp; RSBI):</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 14px;">
+          <div>
+            <label>الحجم الجاري (Vt ml):</label>
+            <input type="number" id="mech-vt" value="450" step="10" oninput="runVentMechanicsCalculations()">
+          </div>
+          <div>
+            <label>ضغط الذروة (Ppeak cmH2O):</label>
+            <input type="number" id="mech-ppeak" value="24" step="1" oninput="runVentMechanicsCalculations()">
+          </div>
+          <div>
+            <label>ضغط الهضبة (Pplat cmH2O):</label>
+            <input type="number" id="mech-pplat" value="18" step="1" oninput="runVentMechanicsCalculations()">
+          </div>
+          <div>
+            <label>ضغط PEEP (cmH2O):</label>
+            <input type="number" id="mech-peep" value="6" step="1" oninput="runVentMechanicsCalculations()">
+          </div>
+          <div>
+            <label>معدل التنفس (RR /min):</label>
+            <input type="number" id="mech-rr" value="14" step="1" oninput="runVentMechanicsCalculations()">
+          </div>
+          <div>
+            <label>تدفق الهواء (Flow L/min):</label>
+            <input type="number" id="mech-flow" value="60" step="5" oninput="runVentMechanicsCalculations()">
+          </div>
+        </div>
+
+        <div class="glass-grid-2" style="margin-top: 10px;">
+          <div class="glass-val">
+            <span>ضغط القيادة (Driving Pressure ΔP = Pplat - PEEP):</span>
+            <strong class="data-val" id="out-mech-dp" style="color: var(--secondary);">12.0 cmH2O</strong>
+          </div>
+          <div class="glass-val">
+            <span>المطاوعة السكونية (Static Compliance Cstat):</span>
+            <strong class="data-val" id="out-mech-cstat">37.5 ml/cmH2O</strong>
+          </div>
+          <div class="glass-val">
+            <span>مقاومة المسالك الهوائية (Airway Resistance Raw):</span>
+            <strong class="data-val" id="out-mech-raw">6.0 cmH2O/L/s</strong>
+          </div>
+          <div class="glass-val">
+            <span>مؤشر التنفس السريع السطحي للفطام (RSBI = RR / Vt):</span>
+            <strong class="data-val" id="out-mech-rsbi" style="color: var(--secondary);">31</strong>
+          </div>
+        </div>
+
+        <div id="mech-interpret-box" class="therapy-card safe" style="margin-top: 12px;">
+          <div class="therapy-title"><span>💡</span> التقييم السريري لميكانيكا التنفس:</div>
+          <div id="mech-interpret-text" style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
+            ضغط القيادة آمن وقائي (&lt; 14 cmH2O). ومؤشر RSBI ممتاز (&lt; 105) مما يشير إلى فرصة نجاح عالية جداً لنزع الأنبوب الرغامي عند استيفاء معايير الوعي وردود الفعل.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-tab 3: ARDSNet Standard Calculator -->
+    <div id="vent-sub-ardsnet" class="subtab-content" style="display: none;">
+      <div class="glass-card">
+        <div class="glass-card-head">
+          <span class="dot" style="background: var(--vent);"></span>
+          <span>إعدادات التهوية الواقية للرئة (ARDSNet Lung-Protective Protocol):</span>
+        </div>
+        <div class="glass-grid-2">
+          <div class="glass-val"><span>الحجم الجاري الموصى به (6 ml/kg من IBW):</span><strong class="data-val mg-color" id="vent-vt-6">-- ml</strong></div>
+          <div class="glass-val"><span>الحد الأعلى المقبول (8 ml/kg من IBW):</span><strong class="data-val mg-color" id="vent-vt-8">-- ml</strong></div>
+          <div class="glass-val"><span>الحد الأدنى لحماية الرئة (4 ml/kg من IBW):</span><strong class="data-val mg-color" id="vent-vt-4">-- ml</strong></div>
+          <div class="glass-val"><span>معدل التنفس المبدئي الموصى به:</span><strong class="data-val">12 - 16 /min</strong></div>
+          <div class="glass-val"><span>ضغط PEEP القياسي:</span><strong class="data-val">5 - 8 cmH2O</strong></div>
+          <div class="glass-val"><span>سقف ضغط الهضبة الآمن (Plateau):</span><strong class="data-val" style="color: var(--secondary);">&lt; 30 cmH2O</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-tab 4: Actionable ABG Bedside Therapy Engine -->
+    <div id="vent-sub-abg" class="subtab-content" style="display: none;">
+      <div class="glass-card">
+        <div class="glass-card-head">
+          <span class="dot" style="background: var(--emergency);"></span>
+          <span>محرك العلاج السريري الموجه لغازات الدم الشريانية (Actionable Bedside ABG Therapy):</span>
+        </div>
+        <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">
+          أدخل بيانات عينة الغازات الشريانية والشوارد، للحصول على التشخيص التلقائي متضمناً معادلة وينتر والفجوة الشاردية، مع <strong>روشتة علاجية فورية ووصفة دقيقة لتعديل إعدادات جهاز التنفس</strong>:
+        </p>
+
+        <!-- ABG Inputs -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin-bottom: 12px;">
+          <div>
+            <label>pH:</label>
+            <input type="number" id="abg-ph" value="7.28" step="0.01" min="6.8" max="7.8" oninput="runAdvancedABGAnalysis()">
+          </div>
+          <div>
+            <label>PaCO2 (mmHg):</label>
+            <input type="number" id="abg-paco2" value="56" step="1" min="10" max="130" oninput="runAdvancedABGAnalysis()">
+          </div>
+          <div>
+            <label>HCO3- (mEq/L):</label>
+            <input type="number" id="abg-hco3" value="25" step="1" min="2" max="60" oninput="runAdvancedABGAnalysis()">
+          </div>
+          <div>
+            <label>PaO2 (mmHg):</label>
+            <input type="number" id="abg-pao2" value="75" step="1" min="20" max="500" oninput="runAdvancedABGAnalysis()">
+          </div>
+          <div>
+            <label>FiO2 (% أو كسر):</label>
+            <input type="number" id="abg-fio2" value="40" step="5" min="21" max="100" oninput="runAdvancedABGAnalysis()">
+          </div>
+          <div>
+            <label>الصوديوم Na+:</label>
+            <input type="number" id="abg-na" value="140" step="1" oninput="runAdvancedABGAnalysis()">
+          </div>
+          <div>
+            <label>الكلور Cl-:</label>
+            <input type="number" id="abg-cl" value="102" step="1" oninput="runAdvancedABGAnalysis()">
+          </div>
+          <div>
+            <label>الألبومين Albumin:</label>
+            <input type="number" id="abg-alb" value="4.0" step="0.1" oninput="runAdvancedABGAnalysis()">
+          </div>
+        </div>
+
+        <!-- Diagnostic Summary Header -->
+        <div id="abg-diag-summary" class="proto-box" style="font-size: 13px; line-height: 1.6; font-weight: 800; background: #FFFFFF; border: 1px solid var(--glass-border);">
+          جاري تحليل العينة...
+        </div>
+
+        <!-- Actionable Prescriptions Container -->
+        <div id="abg-prescriptions-container">
+          <!-- Dynamically populated via ClinicalEngine.generateABGTreatmentProtocol -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 6: موسوعة الكابنوغراف والإجراءات السريرية -->
+  <div id="tab-capno" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>📈</span> موسوعة موجات الكابنوغراف التفاعلية وخطة العمل السريرية الفورية</h2>
+      <span class="section-badge">All Capnography Waveforms</span>
+    </div>
+
+    <!-- Category Filter Bar -->
+    <div class="subnav-tabs" id="capno-filters-bar">
+      <button class="subnav-btn active" onclick="filterCapnoWaves(event, 'all')">الكل (All Waveforms)</button>
+      <button class="subnav-btn" onclick="filterCapnoWaves(event, 'Airway Obstruction')">انسداد المجاري (Obstruction)</button>
+      <button class="subnav-btn" onclick="filterCapnoWaves(event, 'Equipment Failure')">أعطال الأجهزة والدارة (Equipment)</button>
+      <button class="subnav-btn" onclick="filterCapnoWaves(event, 'Patient Breathing')">تنفس المريض والمرخيات (Patient Effort)</button>
+      <button class="subnav-btn" onclick="filterCapnoWaves(event, 'Critical Emergency')">كوارث التخدير والطوارئ (Emergencies)</button>
+    </div>
+
+    <div class="capno-grid" id="capno-cards-grid">
+      <!-- 11 Waveforms injected dynamically from ClinicalData.capnography -->
+    </div>
+  </div>
+
+  <!-- TAB 7: العناية المركزة والمضخات -->
+  <div id="tab-icu" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>🏥</span> العناية المركزة، مضخات رافعات الضغط والإنوتروب</h2>
+      <span class="section-badge">ICU Vasoactive Pumps</span>
+    </div>
+
+    <div class="glass-card">
+      <div class="glass-card-head">
+        <span class="dot" style="background: var(--emergency);"></span>
+        <span>حاسبة مضخات التسريب السريرية بالـ ml/hr متزامنة مع وزن المريض:</span>
+      </div>
+      <div class="glass-grid-2" id="icu-pumps-grid">
+        <!-- Injected via script -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 8: محرك القرارات السريرية CDSS -->
+  <div id="tab-cdss" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>🧠</span> محرك القرارات السريرية الذكي (Smart Clinical CDSS 3.0)</h2>
+      <span class="section-badge">AI Clinical Rules</span>
+    </div>
+
+    <div class="glass-card">
+      <p style="font-size: 12.5px; color: var(--text-secondary); margin-bottom: 12px;">
+        اختر الحالات السريرية والمخاطر المرافقة للمريض، لتوليد خطة تخدير مخصصة ومحسوبة مع إبراز الموانع والتحذيرات الحرجة فوراً:
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;" id="cdss-chips-container">
+        <label class="condition-chip"><input type="checkbox" value="difficult_airway" onchange="runCDSS()"><span>⚠️ مجرى هوائي صعب (Difficult Airway)</span></label>
+        <label class="condition-chip"><input type="checkbox" value="full_stomach" onchange="runCDSS()"><span>🍔 معدة ممتلئة / ارتداد (Full Stomach / RSI)</span></label>
+        <label class="condition-chip"><input type="checkbox" value="shock" onchange="runCDSS()"><span>📉 هبوط ضغط حاد / صدمة (Shock)</span></label>
+        <label class="condition-chip"><input type="checkbox" value="severe_as" onchange="runCDSS()"><span>❤️ تضيق أبهري شديد (Aortic Stenosis)</span></label>
+        <label class="condition-chip"><input type="checkbox" value="asthma" onchange="runCDSS()"><span>💨 ربو قصبي / تشنج (Asthma / COPD)</span></label>
+        <label class="condition-chip"><input type="checkbox" value="renal_failure" onchange="runCDSS()"><span>🧪 عجز كلوي (Renal Failure / High K+)</span></label>
+        <label class="condition-chip"><input type="checkbox" value="mh_susceptible" onchange="runCDSS()"><span>🚨 تأهب فرط الحرارة الخبيث (MH Susceptible)</span></label>
+      </div>
+
+      <div id="cdss-output-panel" class="proto-box" style="padding: 16px; font-size: 13px; line-height: 1.7;">
+        اختر حالة من الأعلى أو اضغط لمشاهدة التقرير التخديري المولد.
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 9: التخدير النصفي وسوائل الجسم والدم -->
+  <div id="tab-spinal" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>💉</span> التخدير النصفي وسوائل العمليات والنزف المسموح به</h2>
+      <span class="section-badge">Spinal &amp; Fluids</span>
+    </div>
+
+    <div class="glass-card">
+      <div class="glass-card-head">
+        <span class="dot" style="background: var(--spinal);"></span>
+        <span>حاسبة التخدير النصفي (Spinal Bupivacaine 0.5% Heavy):</span>
+      </div>
+      <div class="glass-grid-2">
+        <div class="glass-val"><span>مستوى التخدير المستهدف:</span><strong class="data-val">T4 (قيصرية/بطن) إلى T10</strong></div>
+        <div class="glass-val"><span>جرعة البوبيفاكين الثقيل (Heavy Bupivacaine 0.5%):</span><strong class="data-val vol-color" id="spinal-bupi-cc">2.0 - 2.4 cc</strong></div>
+        <div class="glass-val"><span>الفنتانيل المضاف (Adjuvant Fentanyl):</span><strong class="data-val mg-color">15 - 25 mcg (0.3 - 0.5 cc)</strong></div>
+        <div class="glass-val"><span>إبرة التخدير الموصى بها:</span><strong class="data-val">Whitacre / Pencan 25G - 27G</strong></div>
+      </div>
+    </div>
+
+    <div class="glass-card" style="margin-top: 12px;">
+      <div class="glass-card-head">
+        <span class="dot" style="background: var(--primary);"></span>
+        <span>حاسبة سوائل العمليات وعجز الصيام (قاعدة 4-2-1 Rule):</span>
+      </div>
+      <div class="glass-grid-2">
+        <div class="glass-val"><span>سوائل الإدامة في الساعة (Maintenance):</span><strong class="data-val" id="fluid-hourly">-- ml/hr</strong></div>
+        <div class="glass-val"><span>عجز الصيام الكلي (NPO Deficit):</span><strong class="data-val" id="fluid-deficit">-- ml</strong></div>
+        <div class="glass-val"><span>تعويض الساعة الأولى الجراحية:</span><strong class="data-val vol-color" id="fluid-first-hour">-- ml</strong></div>
+        <div class="glass-val"><span>تعويض الساعة الثانية والثالثة:</span><strong class="data-val vol-color" id="fluid-next-hours">-- ml/hr</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 10: السمنة وتعديل الجرع -->
+  <div id="tab-obesity" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>⚖️</span> تخدير مرضى السمنة المفرطة وتعديل الجرعات الدوائية</h2>
+      <span class="section-badge">Bariatric Anesthesia</span>
+    </div>
+
+    <div class="glass-card">
+      <div class="glass-card-head">
+        <span class="dot" style="background: var(--primary);"></span>
+        <span>مؤشرات الوزن المعتمدة لحساب الجرعات في البدانة المرضية (Dosing Scalars):</span>
+      </div>
+      <div class="glass-grid-2">
+        <div class="glass-val"><span>الوزن الحقيقي (Total Body Weight - TBW):</span><strong class="data-val" id="ob-tbw">-- kg</strong></div>
+        <div class="glass-val"><span>الوزن المثالي (Ideal Body Weight - IBW):</span><strong class="data-val" id="ob-ibw">-- kg</strong></div>
+        <div class="glass-val"><span>الوزن المعدل (Adjusted Body Weight - ABW):</span><strong class="data-val" id="ob-abw">-- kg</strong></div>
+        <div class="glass-val"><span>تصنيف مؤشر كتلة الجسم (BMI):</span><strong class="data-val" id="ob-bmi-class">--</strong></div>
+      </div>
+    </div>
+
+    <div class="glass-card" style="margin-top: 12px;">
+      <div class="glass-card-head">
+        <span class="dot" style="background: var(--secondary);"></span>
+        <span>قواعد الجرعات الدوائية في السمنة (Pharmacological Principles):</span>
+      </div>
+      <div style="font-size: 12.5px; line-height: 1.7; color: var(--text-secondary);">
+        <p><strong>البروبوفول للحث:</strong> يُحسب على الوزن المثالي IBW (لتفادي هبوط الضغط الحاد)، بينما في إدامة التخدير TIVA يُحسب على الوزن الكلي TBW.</p>
+        <p><strong>السكسنيل كولين:</strong> يُحسب على الوزن الكلي TBW (1.0 - 1.5 mg/kg) بسبب زيادة حجم التوزع ونشاط إنزيم البلازما كولين إستراز.</p>
+        <p><strong>الروكورونيوم:</strong> يُحسب على الوزن المثالي IBW (0.6 mg/kg) لتفادي استمرار الشلل العضلي لفترات طويلة غير متوقعة.</p>
+        <p><strong>السوغامادكس:</strong> يُحسب على الوزن الكلي أو المعدل TBW/ABW لضمان سرعة الارتباط بجميع جزيئات الروكورونيوم في البلازما.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 11: تخدير الأطفال -->
+  <div id="tab-pediatric" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>👶</span> تخدير الأطفال وطب طوارئ وإنعاش الرضع</h2>
+      <span class="section-badge">Pediatric Anesthesia</span>
+    </div>
+
+    <div class="glass-card">
+      <div class="glass-card-head">
+        <span class="dot" style="background: var(--pediatric);"></span>
+        <span>جرعات الإنعاش التخديري وطوارئ الأطفال المحسوبة لوزن الطفل:</span>
+      </div>
+      <div class="glass-grid-2" id="peds-emergency-grid">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 12: تخدير التوليد والقيصريات -->
+  <div id="tab-obstetric" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>🤰</span> تخدير التوليد، العمليات القيصرية، وأدوية تقبيض الرحم</h2>
+      <span class="section-badge">Obstetric Anesthesia</span>
+    </div>
+
+    <div class="glass-card">
+      <div class="glass-card-head">
+        <span class="dot" style="background: var(--emergency);"></span>
+        <span>بروتوكول أدوية تقبيض الرحم لمنع النزف بعد الولادة (Uterotonics):</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+        <div class="proto-box">
+          <strong style="color: var(--primary);">أوكسيتوسين (Oxytocin):</strong>
+          <p>جرعة بطيئة: 3-5 وحدات وريدياً ببطء شديد على مدى دقيقتين، ثم تسريب وريدي 10-20 وحدة في 500 ml محلول ملحي بمعدل 125 ml/hr. الحذر من هبوط الضغط الحاد عند الحقن السريع بولس.</p>
+        </div>
+        <div class="proto-box">
+          <strong style="color: var(--warning);">إرغومترين (Ergometrine):</strong>
+          <p>الجرعة: 0.2 mg عضل / وريد بطيء. <strong>ممنوع قطعياً في مريضات تسمم الحمل وارتفاع ضغط الدم (Preeclampsia)</strong> لخطر النزف الدماغي المفاجئ.</p>
+        </div>
+        <div class="proto-box">
+          <strong style="color: var(--emergency);">كارب Gent / ميزوبروستول (Carboprost / Misoprostol):</strong>
+          <p>كارب Gent 0.25 mg عضلياً (ممنوع في مريضات الربو القصبي). ميزوبروستول 600 - 800 mcg عبر المستقيم.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 13: البلوكات وموسوعة الأدوية والتخفيف -->
+  <div id="tab-regional" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>🩺</span> التخدير المناطقي، البلوكات العصبية، والحدود القصوى للتخدير</h2>
+      <span class="section-badge">Regional &amp; Local Blocks</span>
+    </div>
+
+    <div class="glass-card">
+      <div class="glass-card-head">
+        <span class="dot" style="background: var(--primary);"></span>
+        <span>الجرعات القصوى الآمنة للمخدرات الموضعية لوزن المريض:</span>
+      </div>
+      <div class="glass-grid-2">
+        <div class="glass-val"><span>ليدوكايين بدون أدرينالين (Lidocaine Plain 3 mg/kg):</span><strong class="data-val mg-color" id="max-lido-plain">-- mg</strong></div>
+        <div class="glass-val"><span>ليدوكايين مع أدرينالين (Lidocaine + Epi 7 mg/kg):</span><strong class="data-val mg-color" id="max-lido-epi">-- mg</strong></div>
+        <div class="glass-val"><span>بوبيفاكايين بدون أدرينالين (Bupivacaine 2 mg/kg):</span><strong class="data-val mg-color" id="max-bupi-plain">-- mg</strong></div>
+        <div class="glass-val"><span>بوبيفاكايين مع أدرينالين (Bupivacaine + Epi 2.5 mg/kg):</span><strong class="data-val mg-color" id="max-bupi-epi">-- mg</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 14: لوحة إدارة المشتركين والمدير -->
+  <div id="tab-admin" class="tab-content searchable-content">
+    <div class="section-header-banner">
+      <h2><span>🛡️</span> لوحة إدارة المشتركين السحابية والتحكم العام (Admin Portal)</h2>
+      <span class="section-badge">Admin Dashboard</span>
+    </div>
+
+    <div class="glass-card" id="admin-auth-guard-panel">
+      <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;">
+        هذه اللوحة مخصصة لإدارة حسابات الأطباء والمشتركين عبر قاعدة بيانات Firebase السحابية:
+      </p>
+
+      <!-- Add New Subscriber Form -->
+      <div style="background: #FFFFFF; border: 1px solid var(--glass-border-subtle); border-radius: var(--radius-md); padding: 16px; margin-bottom: 16px; box-shadow: var(--shadow-sm);">
+        <h3 style="font-size: 14px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">➕ إضافة طبيب / مشترك جديد:</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 12px;">
+          <div><label>اسم المستخدم (Username):</label><input type="text" id="new-sub-username" placeholder="مثال: dr_ahmed"></div>
+          <div><label>كلمة المرور (Password):</label><input type="text" id="new-sub-password" placeholder="أدخل كلمة المرور"></div>
+          <div><label>الاسم الكامل (Doctor Name):</label><input type="text" id="new-sub-fullname" placeholder="د. أحمد علي"></div>
+          <div><label>مدة الاشتراك (الأيام):</label><input type="number" id="new-sub-days" value="30" min="1" max="365"></div>
+        </div>
+        <button class="neu-btn" onclick="addNewSubscriber()" style="background: var(--primary); color: #FFFFFF; border-radius: var(--radius-md); font-weight: 800;">
+          حفظ وتفعيل المشترك السحابي
+        </button>
+      </div>
+
+      <!-- Subscribers List -->
+      <div style="background: #FFFFFF; border: 1px solid var(--glass-border-subtle); border-radius: var(--radius-md); padding: 16px; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 14px; font-weight: 800; color: var(--text-primary); margin: 0;">📋 قائمة المشتركين النشطين:</h3>
+          <button class="h-nav-btn" onclick="loadSubscribersList()" style="padding: 4px 10px; font-size: 11.5px;">تحديث القائمة 🔄</button>
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="clinical-table" style="font-size: 12px;">
+            <thead>
+              <tr>
+                <th>اسم المستخدم</th>
+                <th>الاسم الكامل</th>
+                <th>الحالة</th>
+                <th>تاريخ الانتهاء</th>
+                <th>الإجراءات السريعة</th>
+              </tr>
+            </thead>
+            <tbody id="subscribers-table-body">
+              <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">انقر على "تحديث القائمة" لعرض المشتركين من السحابة.</td></tr>
+            </tbody>
+          </table>
+        </div>
+          </div>
+    </div>
+  </div>
+
+    <!-- WORKSTATION FOOTER WITH AUTHOR CREDITS -->
+    <footer class="workstation-footer" style="text-align: center; padding: 28px 16px 14px; margin-top: 40px; border-top: 1px solid var(--glass-border); font-size: 12px; color: var(--text-muted); width: 100%; box-sizing: border-box;">
+      <p style="font-weight: 800; color: var(--text-primary); font-size: 14px; margin-bottom: 8px;">الموسوعة التخديرية السريرية الشاملة © 2026</p>
+      <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 18px; background: rgba(15, 118, 110, 0.08); border: 1px solid rgba(15, 118, 110, 0.22); border-radius: 9999px; font-weight: 800; color: var(--primary); font-size: 13px; font-family: 'JetBrains Mono', sans-serif;">
+        👑 By: Komail Nabeel / B.M.T Of Anesthesia &amp; ICU
+      </div>
+    </footer>
+  </main>
+
+
+  <!-- Scroll to Top Button -->
+  <button id="btn-scroll-top" class="btn-scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="العودة للأعلى">⬆</button>
+
+<script>
+  // 1. FIREBASE SETUP & STRICT AUTH GUARD
+  const firebaseConfig = {
+    apiKey: "AIzaSyDummyKey_KOM04_PROD_2026",
+    authDomain: "anesthesia-a11fa.firebaseapp.com",
+    projectId: "anesthesia-a11fa",
+    storageBucket: "anesthesia-a11fa.appspot.com",
+    messagingSenderId: "1029384756",
+    appId: "1:1029384756:web:abcd1234efgh5678"
+  };
+
+  let firestoreDb = null;
+  try {
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    firestoreDb = firebase.firestore();
+  } catch(e) { console.warn("Firebase Init fallback:", e); }
+
+  function initAppSession() {
+    let sess = null;
+    try {
+      const raw = localStorage.getItem('anesthesia_session') || sessionStorage.getItem('anesthesia_session');
+      if (raw) sess = JSON.parse(raw);
+    } catch(e) {}
+
+    // Strict Authentication Guard: Redirect to login if no valid session
+    if (!sess || !sess.username) {
+      window.location.replace('index.html');
+      return;
+    }
+
+    // STRICT ADMIN VERIFICATION: ONLY user "komail" with role "admin"
+    const isAdmin = (sess.role === 'admin' && String(sess.username).toLowerCase() === 'komail');
+
+    const badge = document.getElementById('nav-user-badge');
+    if (badge) {
+      if (isAdmin) {
+        badge.textContent = `👑 المدير العام: ${sess.fullName || sess.name || 'د. كميل نبيل'}`;
+        badge.style.background = 'rgba(220, 38, 38, 0.12)';
+        badge.style.borderColor = 'rgba(220, 38, 38, 0.35)';
+        badge.style.color = 'var(--emergency)';
+      } else {
+        badge.textContent = `👨‍⚕️ د. ${sess.fullName || sess.name || sess.username}`;
+        badge.style.background = 'rgba(15, 118, 110, 0.08)';
+        badge.style.borderColor = 'rgba(15, 118, 110, 0.25)';
+        badge.style.color = 'var(--primary)';
+      }
+    }
+
+    if (isAdmin) {
+      document.body.classList.add('is-admin-verified');
+      document.querySelectorAll('.admin-only-feature, [onclick*="tab-admin"]').forEach(el => {
+        el.style.setProperty('display', 'inline-flex', 'important');
+      });
+    } else {
+      document.body.classList.remove('is-admin-verified');
+      // For any non-admin: completely remove Tab 14 buttons and the #tab-admin container from the DOM
+      document.querySelectorAll('.admin-only-feature, [onclick*="tab-admin"]').forEach(el => {
+        el.remove();
+      });
+      const adminTab = document.getElementById('tab-admin');
+      if (adminTab) {
+        adminTab.remove();
+      }
+    }
+  }
+
+  function handleLogout() {
+    try {
+      localStorage.removeItem('anesthesia_session');
+      sessionStorage.removeItem('anesthesia_session');
+    } catch(e) {}
+    window.location.href = 'index.html?logged_out=1';
+  }
+
+  // 2. TAB & DRAWER NAVIGATION
+  function switchMasterTab(evt, tabId) {
+    if (evt) evt.preventDefault();
+
+    // Security check for Admin Tab
+    if (tabId === 'tab-admin') {
+      let sess = null;
+      try {
+        const raw = localStorage.getItem('anesthesia_session') || sessionStorage.getItem('anesthesia_session');
+        if (raw) sess = JSON.parse(raw);
+      } catch(e) {}
+      if (!sess || sess.role !== 'admin' || String(sess.username).toLowerCase() !== 'komail') {
+        alert('⛔ عذراً! لوحة إدارة المشتركين حصرية فقط للمدير كميل نبيل.');
+        return;
+      }
+    }
+
+    document.querySelectorAll('.tab-content').forEach(el => {
+      el.classList.remove('active');
+      el.style.setProperty('display', 'none', 'important');
+    });
+    document.querySelectorAll('.tab-btn, .h-nav-btn').forEach(btn => btn.classList.remove('active'));
+
+    const targetTab = document.getElementById(tabId);
+    if (targetTab) {
+      targetTab.classList.add('active');
+      targetTab.style.setProperty('display', 'block', 'important');
+    }
+
+    document.querySelectorAll(`[onclick*="${tabId}"]`).forEach(btn => btn.classList.add('active'));
+
+    closeDrawer();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function switchSubTab(evt, subtabId) {
+    if (evt) evt.preventDefault();
+    const parentTab = evt.target.closest('.tab-content');
+    if (!parentTab) return;
+
+    parentTab.querySelectorAll('.subtab-content').forEach(st => {
+      st.classList.remove('active');
+      st.style.setProperty('display', 'none', 'important');
+    });
+    parentTab.querySelectorAll('.subnav-btn').forEach(btn => btn.classList.remove('active'));
+
+    const targetSub = document.getElementById(subtabId);
+    if (targetSub) {
+      targetSub.classList.add('active');
+      targetSub.style.setProperty('display', 'block', 'important');
+    }
+    evt.target.classList.add('active');
+  }
+
+  function toggleDrawer() {
+    const drawer = document.getElementById('nav-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    if (drawer && overlay) {
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('open');
+    }
+  }
+
+  function closeDrawer() {
+    const drawer = document.getElementById('nav-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    if (drawer && overlay) {
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+    }
+  }
+
+  // 3. MASTER CLINICAL CALCULATIONS
+  function runMasterCalculations() {
+    const w = parseFloat(document.getElementById('pmb-weight').value) || 70;
+    const h = parseFloat(document.getElementById('pmb-height').value) || 170;
+    const age = parseFloat(document.getElementById('pmb-age').value) || 35;
+    const ageUnit = document.getElementById('pmb-age-unit').value || 'years';
+    const gender = document.getElementById('pmb-gender').value || 'male';
+
+    const weights = ClinicalEngine.calcWeights(w, h, gender);
+    const airway = ClinicalEngine.calcAirway(age, ageUnit);
+
+    // Update PMB Readouts
+    const outBmi = document.getElementById('out-bmi');
+    const outIbw = document.getElementById('out-ibw');
+    const outAbw = document.getElementById('out-abw');
+    const outBsa = document.getElementById('out-bsa');
+    const outEtt = document.getElementById('out-ett');
+    const outDepth = document.getElementById('out-ett-depth');
+    const pillBmi = document.getElementById('pill-bmi');
+
+    if (outBmi) outBmi.textContent = weights.bmi;
+    if (outIbw) outIbw.textContent = weights.ibw;
+    if (outAbw) outAbw.textContent = weights.abw;
+    if (outBsa) outBsa.textContent = weights.bsa;
+    if (outEtt) outEtt.textContent = `${airway.cuffedETT} cuffed / ${airway.uncuffedETT} un`;
+    if (outDepth) outDepth.textContent = airway.ettDepth;
+
+    if (pillBmi) {
+      pillBmi.classList.remove('status-normal', 'status-warn', 'status-danger');
+      if (weights.bmi < 18.5) pillBmi.classList.add('status-warn');
+      else if (weights.bmi <= 24.9) pillBmi.classList.add('status-normal');
+      else if (weights.bmi <= 29.9) pillBmi.classList.add('status-warn');
+      else pillBmi.classList.add('status-danger');
+    }
+
+    // Tab 1 Airway Box
+    const indEttC = document.getElementById('ind-ett-cuffed');
+    const indEttU = document.getElementById('ind-ett-uncuffed');
+    const indDepth = document.getElementById('ind-ett-depth');
+    const indLma = document.getElementById('ind-lma-size');
+    const indBlade = document.getElementById('ind-blade');
+    const indSuction = document.getElementById('ind-suction');
+
+    if (indEttC) indEttC.textContent = `${airway.cuffedETT} mm ID`;
+    if (indEttU) indEttU.textContent = `${airway.uncuffedETT} mm ID`;
+    if (indDepth) indDepth.textContent = `${airway.ettDepth} cm عند الشفة`;
+    if (indBlade) indBlade.textContent = airway.blade;
+    if (indSuction) indSuction.textContent = airway.suction;
+
+    let lmaSize = '4';
+    if (w < 5) lmaSize = '1';
+    else if (w < 10) lmaSize = '1.5';
+    else if (w < 20) lmaSize = '2';
+    else if (w < 30) lmaSize = '2.5';
+    else if (w < 50) lmaSize = '3';
+    else if (w <= 70) lmaSize = '4';
+    else lmaSize = '5';
+    if (indLma) indLma.textContent = `Size ${lmaSize}`;
+
+    // Tab 1 Induction Drugs
+    const drugs = ClinicalEngine.calcInductionDrugs(w, weights.ibw);
+    const tbodyDrugs = document.getElementById('tbody-induction-drugs');
+    if (tbodyDrugs) {
+      tbodyDrugs.innerHTML = drugs.map(d => `
+        <tr>
+          <td><strong>${d.name}</strong></td>
+          <td><small style="color:var(--text-muted);">${d.basis}</small></td>
+          <td><code>${d.standardConc}</code></td>
+          <td><strong class="mg-color">${d.mgDoseMin} - ${d.mgDoseMax} mg</strong></td>
+          <td><strong class="vol-color">${d.mlMin} - ${d.mlMax} cc</strong></td>
+          <td><small style="color:var(--text-secondary);">${d.notes}</small></td>
+        </tr>
+      `).join('');
+    }
+
+    // Tab 3 Reversals
+    const reversals = ClinicalEngine.calcReversals(w);
+    const revSugRoutMg = document.getElementById('rev-sug-rout-mg');
+    const revSugRoutMl = document.getElementById('rev-sug-rout-ml');
+    const revSugDeepMg = document.getElementById('rev-sug-deep-mg');
+    const revSugDeepMl = document.getElementById('rev-sug-deep-ml');
+    const revSugUrgMg = document.getElementById('rev-sug-urg-mg');
+    const revSugUrgMl = document.getElementById('rev-sug-urg-ml');
+    const revNeoMg = document.getElementById('rev-neo-mg');
+    const revNeoMl = document.getElementById('rev-neo-ml');
+
+    if (revSugRoutMg) revSugRoutMg.textContent = `${reversals.sugammadexRoutine.doseMg} mg`;
+    if (revSugRoutMl) revSugRoutMl.textContent = `${reversals.sugammadexRoutine.volMl} cc`;
+    if (revSugDeepMg) revSugDeepMg.textContent = `${reversals.sugammadexDeep.doseMg} mg`;
+    if (revSugDeepMl) revSugDeepMl.textContent = `${reversals.sugammadexDeep.volMl} cc`;
+    if (revSugUrgMg) revSugUrgMg.textContent = `${reversals.sugammadexImmediate.doseMg} mg`;
+    if (revSugUrgMl) revSugUrgMl.textContent = `${reversals.sugammadexImmediate.volMl} cc`;
+    if (revNeoMg) revNeoMg.textContent = `${reversals.neostigmineAtropine.neostigmineMg} mg Neo + ${reversals.neostigmineAtropine.atropineMg} mg Atro`;
+    if (revNeoMl) revNeoMl.textContent = `${reversals.neostigmineAtropine.neostigmineMl} cc Neo + ${reversals.neostigmineAtropine.atropineMl} cc Atro`;
+
+    // Tab 5 ARDSNet
+    const vt6 = Math.round(weights.ibw * 6);
+    const vt8 = Math.round(weights.ibw * 8);
+    const vt4 = Math.round(weights.ibw * 4);
+    const ventVt6 = document.getElementById('vent-vt-6');
+    const ventVt8 = document.getElementById('vent-vt-8');
+    const ventVt4 = document.getElementById('vent-vt-4');
+    if (ventVt6) ventVt6.textContent = `${vt6} ml`;
+    if (ventVt8) ventVt8.textContent = `${vt8} ml`;
+    if (ventVt4) ventVt4.textContent = `${vt4} ml`;
+
+    // Tab 7 ICU Vasoactive Pumps
+    const icuGrid = document.getElementById('icu-pumps-grid');
+    if (icuGrid) {
+      const noradMl = ((w * 0.1 * 60) / 80).toFixed(1);
+      const adrMl = ((w * 0.1 * 60) / 80).toFixed(1);
+      const dopaMl = ((w * 5 * 60) / 4000).toFixed(1);
+      const dobutMl = ((w * 5 * 60) / 5000).toFixed(1);
+
+      icuGrid.innerHTML = `
+        <div class="glass-val"><span>نورأدرينالين (Noradrenaline 0.1 mcg/kg/min):<br><small>4mg في 50ml = 80 mcg/ml</small></span><strong class="data-val vol-color">${noradMl} ml/hr</strong></div>
+        <div class="glass-val"><span>أدرينالين (Epinephrine 0.1 mcg/kg/min):<br><small>4mg في 50ml = 80 mcg/ml</small></span><strong class="data-val vol-color">${adrMl} ml/hr</strong></div>
+        <div class="glass-val"><span>دوبامين (Dopamine 5 mcg/kg/min):<br><small>200mg في 50ml = 4000 mcg/ml</small></span><strong class="data-val vol-color">${dopaMl} ml/hr</strong></div>
+        <div class="glass-val"><span>دوبيوتامين (Dobutamine 5 mcg/kg/min):<br><small>250mg في 50ml = 5000 mcg/ml</small></span><strong class="data-val vol-color">${dobutMl} ml/hr</strong></div>
+      `;
+    }
+
+    // Tab 9 Fluids
+    const fluids = ClinicalEngine.calcFluids(w, 8);
+    const flH = document.getElementById('fluid-hourly');
+    const flDef = document.getElementById('fluid-deficit');
+    const flFirst = document.getElementById('fluid-first-hour');
+    const flNext = document.getElementById('fluid-next-hours');
+    if (flH) flH.textContent = `${fluids.maintenanceHourly} ml/hr`;
+    if (flDef) flDef.textContent = `${fluids.totalDeficit} ml (لصيام 8 ساعات)`;
+    if (flFirst) flFirst.textContent = `${fluids.firstHourReplacement} ml`;
+    if (flNext) flNext.textContent = `${fluids.secondHourReplacement} ml/hr`;
+
+    // Tab 10 Obesity
+    const obTbw = document.getElementById('ob-tbw');
+    const obIbw = document.getElementById('ob-ibw');
+    const obAbw = document.getElementById('ob-abw');
+    const obClass = document.getElementById('ob-bmi-class');
+    if (obTbw) obTbw.textContent = `${w} kg`;
+    if (obIbw) obIbw.textContent = `${weights.ibw} kg`;
+    if (obAbw) obAbw.textContent = `${weights.abw} kg`;
+    if (obClass) {
+      let bmic = 'وزن طبيعي';
+      if (weights.bmi >= 40) bmic = 'سمنة مفرطة من الدرجة الثالثة (Morbid Obesity Class III)';
+      else if (weights.bmi >= 35) bmic = 'سمنة من الدرجة الثانية (Obesity Class II)';
+      else if (weights.bmi >= 30) bmic = 'سمنة من الدرجة الأولى (Obesity Class I)';
+      else if (weights.bmi >= 25) bmic = 'زيادة وزن (Overweight)';
+      obClass.textContent = bmic;
+    }
+
+    // Tab 11 Pediatrics Emergency
+    const pedsGrid = document.getElementById('peds-emergency-grid');
+    if (pedsGrid) {
+      const defibJoules = Math.round(w * 2);
+      const atroMg = (w * 0.02).toFixed(2);
+      const epiBolusMcg = Math.round(w * 10);
+      pedsGrid.innerHTML = `
+        <div class="glass-val"><span>صدمة الإنعاش (Defibrillation 2 J/kg):</span><strong class="data-val mg-color">${defibJoules} Joules</strong></div>
+        <div class="glass-val"><span>أدرينالين الإنعاش (Epi 10 mcg/kg):</span><strong class="data-val mg-color">${epiBolusMcg} mcg (0.1 ml/kg من تخفيف 1:10,000)</strong></div>
+        <div class="glass-val"><span>أتروبين (Atropine 0.02 mg/kg):</span><strong class="data-val mg-color">${atroMg} mg (الحد الأدنى 0.1 mg)</strong></div>
+        <div class="glass-val"><span>بولس السوائل الإسعافي (Normal Saline 20 ml/kg):</span><strong class="data-val vol-color">${Math.round(w * 20)} ml</strong></div>
+      `;
+    }
+
+    // Tab 13 Max Local Anesthetics
+    const maxLidoP = document.getElementById('max-lido-plain');
+    const maxLidoE = document.getElementById('max-lido-epi');
+    const maxBupiP = document.getElementById('max-bupi-plain');
+    const maxBupiE = document.getElementById('max-bupi-epi');
+    if (maxLidoP) maxLidoP.textContent = `${Math.round(w * 3)} mg (${Math.round((w * 3) / 20)} cc من تركيز 2%)`;
+    if (maxLidoE) maxLidoE.textContent = `${Math.round(w * 7)} mg (${Math.round((w * 7) / 20)} cc من تركيز 2%)`;
+    if (maxBupiP) maxBupiP.textContent = `${Math.round(w * 2)} mg (${Math.round((w * 2) / 5)} cc من تركيز 0.5%)`;
+    if (maxBupiE) maxBupiE.textContent = `${Math.round(w * 2.5)} mg (${Math.round((w * 2.5) / 5)} cc من تركيز 0.5%)`;
+
+    // Trigger secondary recalculations
+    runSTOPBangCalculation();
+    runVentMechanicsCalculations();
+    runAdvancedABGAnalysis();
+    runCDSS();
+  }
+
+  // 4. RCRI CALCULATION
+  function runRCRICalculation() {
+    const checked = Array.from(document.querySelectorAll('#rcri-factors-box input[type="checkbox"]:checked')).map(c => c.value);
+    const result = ClinicalEngine.calcRCRI(checked);
+
+    const badge = document.getElementById('rcri-class-badge');
+    const pct = document.getElementById('rcri-risk-pct');
+    const rec = document.getElementById('rcri-recommendation');
+    const panel = document.getElementById('rcri-result-panel');
+
+    if (badge) badge.textContent = result.riskClass;
+    if (pct) pct.textContent = result.maceRate;
+    if (rec) rec.textContent = result.recommendation;
+
+    if (panel) {
+      panel.classList.remove('safe', 'warning', 'danger');
+      if (result.count <= 1) panel.classList.add('safe');
+      else if (result.count === 2) panel.classList.add('warning');
+      else panel.classList.add('danger');
+    }
+  }
+
+  // 5. STOP-BANG CALCULATION
+  function runSTOPBangCalculation() {
+    const w = parseFloat(document.getElementById('pmb-weight').value) || 70;
+    const h = parseFloat(document.getElementById('pmb-height').value) || 170;
+    const age = parseFloat(document.getElementById('pmb-age').value) || 35;
+    const gender = document.getElementById('pmb-gender').value || 'male';
+    const bmi = w / Math.pow(h / 100, 2);
+
+    // Auto-check biological criteria
+    const bBmi = document.getElementById('sb-bmi-chk');
+    const bAge = document.getElementById('sb-age-chk');
+    const bGender = document.getElementById('sb-gender-chk');
+    if (bBmi) bBmi.checked = bmi > 35;
+    if (bAge) bAge.checked = age > 50;
+    if (bGender) bGender.checked = gender === 'male';
+
+    const checked = Array.from(document.querySelectorAll('#preop-sub-stopbang input[type="checkbox"]:checked')).map(c => c.value);
+    const result = ClinicalEngine.calcSTOPBang(checked);
+
+    const badge = document.getElementById('stopbang-score-badge');
+    const recList = document.getElementById('stopbang-recommendations-list');
+    const panel = document.getElementById('stopbang-result-panel');
+
+    if (badge) badge.textContent = `النقاط: ${result.score}/8 — ${result.riskLevel}`;
+    if (recList) {
+      recList.innerHTML = result.recommendations.map(r => `<li>${r}</li>`).join('');
+    }
+    if (panel) {
+      panel.classList.remove('safe', 'warning', 'danger');
+      panel.classList.add(result.levelClass);
+    }
+  }
+
+  // 6. VENTILATOR MODES EXPLORER
+  let currentSelectedModeId = 'vcv';
+  function renderVentilatorModes() {
+    const chipsBox = document.getElementById('vent-modes-chips');
+    if (!chipsBox || !ClinicalData.ventilatorModes) return;
+
+    chipsBox.innerHTML = ClinicalData.ventilatorModes.map((m, idx) => `
+      <button class="mode-btn ${idx === 0 ? 'active' : ''}" onclick="selectVentMode('${m.id}', event)">
+        ${m.nameEn}
+      </button>
+    `).join('');
+
+    showVentModeDetail(ClinicalData.ventilatorModes[0].id);
+  }
+
+  function selectVentMode(modeId, evt) {
+    if (evt) evt.preventDefault();
+    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+    if (evt) evt.target.classList.add('active');
+    showVentModeDetail(modeId);
+  }
+
+  function showVentModeDetail(modeId) {
+    const detailBox = document.getElementById('vent-mode-detail');
+    if (!detailBox) return;
+
+    const mode = ClinicalData.ventilatorModes.find(m => m.id === modeId);
+    if (!mode) return;
+
+    detailBox.innerHTML = `
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+        <h3 style="font-size: 15px; font-weight: 800; color: var(--vent); margin: 0;">${mode.nameAr}</h3>
+        <span class="badge" style="background: rgba(14,116,144,0.1); color: var(--vent); font-weight: 800;">${mode.type}</span>
+      </div>
+      <p style="font-size: 12.5px; line-height: 1.6; color: var(--text-primary); margin-bottom: 12px;">${mode.characteristics}</p>
+      
+      <h4 style="font-size: 13px; font-weight: 800; color: var(--text-primary); margin-bottom: 6px;">⚙️ الإعدادات الموصى بها سريرياً:</h4>
+      <div style="overflow-x: auto; margin-bottom: 12px;">
+        <table class="clinical-table" style="font-size: 12px;">
+          <thead>
+            <tr><th>المعامل (Parameter)</th><th>القيمة القياسية</th><th>توجيهات سريرية</th></tr>
+          </thead>
+          <tbody>
+            ${mode.settings.map(s => `<tr><td><strong>${s.param}</strong></td><td><code style="color:var(--primary); font-weight:800;">${s.standard}</code></td><td><small>${s.note}</small></td></tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; margin-bottom: 12px;">
+        <div class="proto-box" style="border-right-color: var(--secondary);">
+          <strong style="color: var(--secondary);">الميزات الإيجابية (Pros):</strong>
+          <ul style="margin: 4px 0 0; padding-right: 18px; font-size: 11.5px; line-height: 1.5;">${mode.pros.map(p => `<li>${p}</li>`).join('')}</ul>
+        </div>
+        <div class="proto-box" style="border-right-color: var(--warning);">
+          <strong style="color: var(--warning);">العيوب والمخاطر (Cons):</strong>
+          <ul style="margin: 4px 0 0; padding-right: 18px; font-size: 11.5px; line-height: 1.5;">${mode.cons.map(c => `<li>${c}</li>`).join('')}</ul>
+        </div>
+      </div>
+
+      <div class="therapy-card safe">
+        <div class="therapy-title"><span>💡</span> اللؤلؤة السريرية (Clinical Pearl):</div>
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">${mode.clinicalPearls}</div>
+      </div>
+    `;
+  }
+
+  // 7. ADVANCED LUNG MECHANICS & RSBI CALCULATIONS
+  function runVentMechanicsCalculations() {
+    const vt = parseFloat(document.getElementById('mech-vt').value) || 450;
+    const ppeak = parseFloat(document.getElementById('mech-ppeak').value) || 24;
+    const pplat = parseFloat(document.getElementById('mech-pplat').value) || 18;
+    const peep = parseFloat(document.getElementById('mech-peep').value) || 6;
+    const rr = parseFloat(document.getElementById('mech-rr').value) || 14;
+    const flow = parseFloat(document.getElementById('mech-flow').value) || 60;
+
+    const res = ClinicalEngine.calcVentilatorAdvanced({ vT: vt, pPeak: ppeak, pPlat: pplat, peep, rr, flowLpm: flow });
+
+    const outDp = document.getElementById('out-mech-dp');
+    const outCstat = document.getElementById('out-mech-cstat');
+    const outRaw = document.getElementById('out-mech-raw');
+    const outRsbi = document.getElementById('out-mech-rsbi');
+    const interpretBox = document.getElementById('mech-interpret-box');
+    const interpretText = document.getElementById('mech-interpret-text');
+
+    if (outDp) {
+      outDp.textContent = `${res.drivingPressure} cmH2O`;
+      outDp.style.color = res.drivingPressureClass === 'safe' ? 'var(--secondary)' : (res.drivingPressureClass === 'warning' ? 'var(--warning)' : 'var(--emergency)');
+    }
+    if (outCstat) outCstat.textContent = `${res.staticCompliance} ml/cmH2O`;
+    if (outRaw) outRaw.textContent = `${res.airwayResistance} cmH2O/L/s`;
+    if (outRsbi) {
+      outRsbi.textContent = res.rsbi;
+      outRsbi.style.color = res.rsbi < 105 ? 'var(--secondary)' : 'var(--emergency)';
+    }
+
+    if (interpretBox && interpretText) {
+      interpretBox.classList.remove('safe', 'warning', 'danger');
+      interpretBox.classList.add(res.drivingPressureClass);
+      interpretText.innerHTML = `
+        <p><strong>ضغط القيادة:</strong> ${res.drivingPressureNote}</p>
+        <p><strong>مؤشر الفطام RSBI (${res.rsbi}):</strong> ${res.rsbiInterpretation}</p>
+      `;
+    }
+  }
+
+  // 8. ADVANCED ACTIONABLE BEDSIDE ABG THERAPY ENGINE
+  function runAdvancedABGAnalysis() {
+    const ph = document.getElementById('abg-ph').value;
+    const paco2 = document.getElementById('abg-paco2').value;
+    const hco3 = document.getElementById('abg-hco3').value;
+    const pao2 = document.getElementById('abg-pao2').value;
+    const fio2 = document.getElementById('abg-fio2').value;
+    const na = document.getElementById('abg-na').value;
+    const cl = document.getElementById('abg-cl').value;
+    const alb = document.getElementById('abg-alb').value;
+    const w = parseFloat(document.getElementById('pmb-weight').value) || 70;
+
+    const res = ClinicalEngine.generateABGTreatmentProtocol({
+      ph, paco2, hco3, pao2, fio2, na, cl, albumin: alb, weightKg: w
+    });
+
+    const summaryBox = document.getElementById('abg-diag-summary');
+    const prescBox = document.getElementById('abg-prescriptions-container');
+
+    if (!summaryBox || !prescBox) return;
+
+    if (!res.hasData) {
+      summaryBox.textContent = res.status;
+      prescBox.innerHTML = '';
+      return;
+    }
+
+    // Diagnostic summary
+    summaryBox.innerHTML = `
+      <div style="color: var(--primary); font-size: 14px; margin-bottom: 4px;">🎯 التشخيص الأولي: ${res.diagnosis}</div>
+      <div style="font-size: 12px; color: var(--text-secondary);">${res.compensationStatus || ''}</div>
+      <div style="display: flex; gap: 12px; margin-top: 6px; font-size: 12px;">
+        <span>الفجوة الشاردية (AG): <strong>${res.anionGap}</strong> mEq/L</span>
+        <span>الفجوة المصححة للألبومين: <strong>${res.correctedAG}</strong> mEq/L</span>
+      </div>
+    `;
+
+    // Prescriptions Box
+    let prescHtml = '';
+
+    // 1. Bedside Medical Actions
+    if (res.medicalActions && res.medicalActions.length > 0) {
+      prescHtml += `
+        <div class="therapy-card safe">
+          <div class="therapy-title" style="color: var(--secondary);"><span>💊</span> الخطة العلاجية الدوائية الفورية (Bedside Medical Actions):</div>
+          <ul style="margin: 0; padding-right: 18px; font-size: 12px; line-height: 1.6; color: var(--text-primary);">
+            ${res.medicalActions.map(a => `<li>${a}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    // 2. Ventilator Prescription
+    if (res.ventilatorActions && res.ventilatorActions.length > 0) {
+      prescHtml += `
+        <div class="therapy-card warning">
+          <div class="therapy-title" style="color: var(--warning);"><span>🫁</span> وصفة تعديل جهاز التنفس الاصطناعي (Ventilator Modifications):</div>
+          <ul style="margin: 0; padding-right: 18px; font-size: 12px; line-height: 1.6; color: var(--text-primary);">
+            ${res.ventilatorActions.map(v => `<li><strong>${v}</strong></li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    // 3. Hypoxemia & ARDS Escalation Ladder
+    if (res.hypoxemiaProtocol) {
+      const hyp = res.hypoxemiaProtocol;
+      prescHtml += `
+        <div class="therapy-card ${hyp.pfRatio <= 100 ? 'danger' : 'safe'}">
+          <div class="therapy-title" style="color: ${hyp.pfRatio <= 100 ? 'var(--emergency)' : 'var(--primary)'};">
+            <span>🫀</span> تقييم الأكسجة ودرجة ARDS (PaO2/FiO2 = ${hyp.pfRatio}): ${hyp.severity}
+          </div>
+          <ul style="margin: 0; padding-right: 18px; font-size: 12px; line-height: 1.6; color: var(--text-primary);">
+            ${hyp.steps.map(s => `<li>${s}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    // 4. Critical Warnings
+    if (res.criticalWarnings && res.criticalWarnings.length > 0) {
+      prescHtml += `
+        <div class="therapy-card danger">
+          <div class="therapy-title" style="color: var(--emergency);"><span>🚨</span> تحذيرات أمان وموانع حرجة (Red Flags):</div>
+          <ul style="margin: 0; padding-right: 18px; font-size: 12px; line-height: 1.6; color: var(--emergency);">
+            ${res.criticalWarnings.map(w => `<li><strong>${w}</strong></li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    prescBox.innerHTML = prescHtml;
+  }
+
+  // 9. CAPNOGRAPHY WAVEFORMS RENDERER & FILTER
+  function renderCapnographyWaves(filterCategory = 'all') {
+    const grid = document.getElementById('capno-cards-grid');
+    if (!grid || !ClinicalData.capnography) return;
+
+    const filtered = filterCategory === 'all' 
+      ? ClinicalData.capnography 
+      : ClinicalData.capnography.filter(c => c.category === filterCategory);
+
+    grid.innerHTML = filtered.map(c => `
+      <div class="capno-card" style="border-right-color: ${getCapnoBorderColor(c.category)};">
+        <div class="capno-title">
+          <span>${c.nameAr}</span>
+          <span class="badge" style="background: rgba(15,118,110,0.1); color: var(--primary); font-size: 11px;">${c.category}</span>
+        </div>
+        <div style="font-size: 11.5px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+          EtCO2 Range: <strong>${c.etco2}</strong>
+        </div>
+        
+        <!-- Interactive High-Def SVG Waveform -->
+        <svg class="wave-svg" viewBox="0 0 200 80">
+          <path d="${c.svgPath}" fill="none" stroke="${getCapnoWaveStroke(c.category)}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <div class="capno-meta">
+          <p style="margin: 0 0 4px;"><strong>الوصف الشكلي:</strong> ${c.description}</p>
+          <p style="margin: 0 0 4px;"><strong>الأسباب الشائعة:</strong> ${c.causes.join(' • ')}</p>
+        </div>
+
+        <div class="capno-actions-box">
+          <div class="capno-actions-title"><span>⚡</span> خطة العمل الفورية بغرفة العمليات والعناية:</div>
+          <ul class="capno-actions-list">
+            ${c.actions.map(a => `<li>${a}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function getCapnoBorderColor(cat) {
+    if (cat === 'Critical Emergency') return 'var(--emergency)';
+    if (cat === 'Airway Obstruction') return 'var(--warning)';
+    if (cat === 'Equipment Failure') return 'var(--spinal)';
+    if (cat === 'Normal' || cat === 'Physiological Normal') return 'var(--secondary)';
+    return 'var(--primary)';
+  }
+
+  function getCapnoWaveStroke(cat) {
+    if (cat === 'Critical Emergency') return '#EF4444';
+    if (cat === 'Airway Obstruction') return '#F59E0B';
+    if (cat === 'Equipment Failure') return '#8B5CF6';
+    if (cat === 'Normal' || cat === 'Physiological Normal') return '#10B981';
+    return '#06B6D4';
+  }
+
+  function filterCapnoWaves(evt, category) {
+    if (evt) evt.preventDefault();
+    document.querySelectorAll('#capno-filters-bar .subnav-btn').forEach(b => b.classList.remove('active'));
+    if (evt) evt.target.classList.add('active');
+    renderCapnographyWaves(category);
+  }
+
+  // 10. EMERGENCY CRISES RENDERER
+  function renderEmergencyCrises() {
+    const container = document.getElementById('crises-accordion-container');
+    if (!container || !ClinicalData.crises) return;
+
+    container.innerHTML = ClinicalData.crises.map(crisis => `
+      <div class="glass-card" style="margin-bottom: 12px; border-right: 4px solid var(--emergency);">
+        <div class="glass-card-head" style="cursor: pointer;" onclick="this.parentElement.querySelector('.crisis-body').classList.toggle('hidden-content')">
+          <span class="dot" style="background: var(--emergency);"></span>
+          <span style="font-weight: 800; font-size: 13.5px; color: var(--text-primary);">${crisis.title}</span>
+          <span class="badge" style="margin-right: auto; background: rgba(220,38,38,0.1); color: var(--emergency);">${crisis.category}</span>
+        </div>
+        <div class="crisis-body" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--glass-border-subtle);">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            ${crisis.steps.map(s => `
+              <div style="display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px;">
+                <span style="background: var(--emergency); color: #FFFFFF; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; flex-shrink: 0;">${s.num}</span>
+                <span style="line-height: 1.5; color: var(--text-primary);">${s.text}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 11. CDSS ENGINE TRIGGER
+  function runCDSS() {
+    const w = parseFloat(document.getElementById('pmb-weight').value) || 70;
+    const h = parseFloat(document.getElementById('pmb-height').value) || 170;
+    const age = parseFloat(document.getElementById('pmb-age').value) || 35;
+    const ageUnit = document.getElementById('pmb-age-unit').value || 'years';
+    const gender = document.getElementById('pmb-gender').value || 'male';
+
+    const checkedConditions = Array.from(document.querySelectorAll('#cdss-chips-container input[type="checkbox"]:checked')).map(c => c.value);
+
+    const plan = ClinicalEngine.generateCDSSPlan({ weight: w, height: h, age, ageUnit, gender }, checkedConditions);
+    const panel = document.getElementById('cdss-output-panel');
+    if (!panel) return;
+
+    let html = '';
+    if (plan.redAlerts.length > 0) {
+      html += `
+        <div style="background: rgba(220,38,38,0.08); border-right: 4px solid var(--emergency); padding: 12px; border-radius: var(--radius-md); margin-bottom: 12px;">
+          <h4 style="color: var(--emergency); margin: 0 0 6px; font-size: 13px; font-weight: 800;">🚨 تحذيرات وموانع سريرية حمراء (Contraindications):</h4>
+          <ul style="margin: 0; padding-right: 18px; font-size: 12px; color: var(--emergency); font-weight: 700; line-height: 1.6;">
+            ${plan.redAlerts.map(a => `<li>${a}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    html += `<h4 style="color: var(--primary); font-size: 13px; margin: 0 0 8px;">💉 استراتيجية الحث التخديري الموصى بها:</h4>`;
+    html += `<div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px;">`;
+    plan.inductionStrategy.forEach(st => {
+      html += `<div class="glass-val"><span>${st.drug} (${st.note}):</span><strong class="data-val mg-color">${st.dose}</strong></div>`;
+    });
+    html += `</div>`;
+
+    if (plan.airwayStrategy.length > 0) {
+      html += `<h4 style="color: var(--warning); font-size: 13px; margin: 0 0 6px;">توجيهات المجرى الهوائي والتنبيب:</h4>`;
+      html += `<ul style="margin: 0 0 10px; padding-right: 18px; font-size: 12px; line-height: 1.6;">${plan.airwayStrategy.map(s => `<li>${s}</li>`).join('')}</ul>`;
+    }
+
+    if (plan.specialPrecautions.length > 0) {
+      html += `<h4 style="color: var(--secondary); font-size: 13px; margin: 0 0 6px;">احتياطات خاصة:</h4>`;
+      html += `<ul style="margin: 0; padding-right: 18px; font-size: 12px; line-height: 1.6;">${plan.specialPrecautions.map(s => `<li>${s}</li>`).join('')}</ul>`;
+    }
+
+    panel.innerHTML = html;
+  }
+
+  function isCurrentUserAdmin() {
+    try {
+      const raw = localStorage.getItem('anesthesia_session') || sessionStorage.getItem('anesthesia_session');
+      if (raw) {
+        const s = JSON.parse(raw);
+        return (s && s.role === 'admin' && String(s.username).toLowerCase() === 'komail');
+      }
+    } catch(e) {}
+    return false;
+  }
+
+  // 12. FIRESTORE ADMIN METHODS (STRICTLY RESTRICTED TO KOMAIL NABEEL)
+  async function loadSubscribersList() {
+    if (!isCurrentUserAdmin()) return;
+    const tbody = document.getElementById('subscribers-table-body');
+    if (!tbody || !firestoreDb) return;
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center;">جاري تحميل المشتركين من السحابة...</td></tr>';
+    try {
+      const snap = await firestoreDb.collection('subscribers').get();
+      if (snap.empty) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center;">لا يوجد أي مشتركين حالياً.</td></tr>';
+        return;
+      }
+      let rows = '';
+      snap.forEach(doc => {
+        const d = doc.data();
+        const exp = new Date(d.expiresAt);
+        const isExp = new Date() > exp;
+        rows += `
+          <tr>
+            <td><strong>${doc.id}</strong></td>
+            <td>${d.fullName || '—'}</td>
+            <td><span class="badge" style="background: ${isExp ? 'rgba(220,38,38,0.1)' : 'rgba(5,150,105,0.1)'}; color: ${isExp ? 'var(--emergency)' : 'var(--secondary)'};">${isExp ? 'منتهي' : 'نشط'}</span></td>
+            <td>${exp.toLocaleDateString('ar-EG')}</td>
+            <td>
+              <button class="h-nav-btn" onclick="extendSubscription('${doc.id}', 30)" style="padding: 2px 8px; font-size: 11px;">+30 يوم</button>
+              <button class="h-nav-btn" onclick="deleteSubscriber('${doc.id}')" style="padding: 2px 8px; font-size: 11px; color: var(--emergency);">حذف</button>
+            </td>
+          </tr>
+        `;
+      });
+      tbody.innerHTML = rows;
+    } catch(e) {
+      tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--emergency);">تعذر الاتصال بالسحابة: ${e.message}</td></tr>`;
+    }
+  }
+  window.loadSubscribersList = loadSubscribersList;
+
+  async function addNewSubscriber() {
+    if (!isCurrentUserAdmin()) { alert('⛔ عذراً، فقط المدير كميل نبيل يملك صلاحية إدارة وتفعيل المشتركين.'); return; }
+    const username = document.getElementById('new-sub-username').value.trim().toLowerCase();
+    const password = document.getElementById('new-sub-password').value.trim();
+    const fullName = document.getElementById('new-sub-fullname').value.trim();
+    const days = parseInt(document.getElementById('new-sub-days').value) || 30;
+
+    if (!username || !password) { alert('يرجى كتابة اسم المستخدم وكلمة المرور'); return; }
+    const expiresAt = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toISOString();
+
+    try {
+      await firestoreDb.collection('subscribers').doc(username).set({
+        username, password, fullName, expiresAt, status: 'active', role: 'subscriber', createdAt: new Date().toISOString()
+      });
+      alert(`✅ تم حفظ وتفعيل حساب "${username}" بنجاح لمدة ${days} يوماً.`);
+      loadSubscribersList();
+    } catch(e) { alert('فشل الحفظ: ' + e.message); }
+  }
+  window.addNewSubscriber = addNewSubscriber;
+
+  async function extendSubscription(username, days = 30) {
+    if (!isCurrentUserAdmin()) { alert('⛔ عذراً، فقط المدير كميل نبيل يملك صلاحية تمديد الاشتراكات.'); return; }
+    try {
+      const docRef = firestoreDb.collection('subscribers').doc(username);
+      const snap = await docRef.get();
+      if (!snap.exists) return;
+      const cur = new Date(snap.data().expiresAt).getTime();
+      const newExp = new Date(cur + days * 24 * 60 * 60 * 1000).toISOString();
+      await docRef.update({ expiresAt: newExp, status: 'active' });
+      alert(`✅ تم تمديد الاشتراك حتى ${new Date(newExp).toLocaleDateString('ar-EG')}`);
+      loadSubscribersList();
+    } catch(e) { alert('فشل التمديد: ' + e.message); }
+  }
+  window.extendSubscription = extendSubscription;
+
+  async function deleteSubscriber(username) {
+    if (!isCurrentUserAdmin()) { alert('⛔ عذراً، فقط المدير كميل نبيل يملك صلاحية حذف المشتركين.'); return; }
+    if (!confirm(`هل أنت متأكد من حذف المشترك "${username}" فوراً؟`)) return;
+    try {
+      await firestoreDb.collection('subscribers').doc(username).delete();
+      alert(`تم حذف المشترك بنجاح.`);
+      loadSubscribersList();
+    } catch(e) { alert('فشل الحذف: ' + e.message); }
+  }
+  window.deleteSubscriber = deleteSubscriber;
+
+  // INITIALIZE WORKSTATION
+  window.addEventListener('DOMContentLoaded', () => {
+    initAppSession();
+    runMasterCalculations();
+    renderVentilatorModes();
+    renderCapnographyWaves();
+    renderEmergencyCrises();
+
+    // Scroll-to-top button observer
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('btn-scroll-top');
+      if (btn) {
+        if (window.scrollY > 300) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
